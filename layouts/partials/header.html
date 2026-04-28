@@ -18,7 +18,7 @@
     <script>
       document.getElementById('logout-button').addEventListener('click', function () {
         sessionStorage.removeItem('tce_auth');
-        window.location.replace({{ "/login/" | relURL | jsonify }});
+        window.location.replace('{{ "/login/" | relLangURL }}');
       });
     </script>
   </div>
