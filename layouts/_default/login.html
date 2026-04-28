@@ -60,7 +60,7 @@
   <script>
     (function () {
       if (sessionStorage.getItem('tce_auth') === '1') {
-        location.replace({{ "/" | relURL | jsonify }});
+        location.replace('{{ "/" | relLangURL }}');
         return;
       }
 
@@ -89,7 +89,7 @@
         var pw = document.getElementById('password').value;
         if (pw === correctPassword) {
           sessionStorage.setItem('tce_auth', '1');
-          location.replace({{ "/" | relURL | jsonify }});
+          location.replace('{{ "/" | relLangURL }}');
         } else {
           showError('Incorrect password. Please try again.');
           document.getElementById('password').value = '';
