@@ -1,23 +1,13 @@
-{{- $bullet := .bullet | default "" -}}
-{{- $size := .size | default "" -}}
 {{- $classes := slice
   "max-w-none"
   "text-text"
-  "dark:text-darkmode-text"
   "prose"
   "prose-neutral"
-  "dark:prose-invert"
   "prose-headings:text-primary"
-  "dark:prose-headings:text-darkmode-primary"
   "prose-strong:text-primary"
-  "dark:prose-strong:text-darkmode-primary"
   "prose-a:text-primary"
-  "dark:prose-a:text-darkmode-primary"
-  "dark:prose-a:hover:text-darkmode-primary/80"
   "prose-a:hover:text-primary/80"
-  "dark:prose-a:hover:text-darkmode-primary/80"
   "prose-blockquote:text-primary"
-  "dark:prose-blockquote:text-darkmode-primary"
   "prose-p:mb-6"
   "[&_p]:mb-6"
   "prose-ul:mb-6"
@@ -29,52 +19,6 @@
   "[&_ul_ol]:mt-0"
   "[&_li>p]:mt-4"
   "[&_li>p]:mb-0"
-  "[&_details:not(.toc)>summary]:list-none"
-  "[&_details:not(.toc)>summary]:-webkit-details-marker]:hidden"
-  "[&_details:not(.toc)>summary::marker]:content-['']"
-  "[&_details:not(.toc)>summary]:cursor-pointer"
-  "[&_details:not(.toc)>summary]:mt-6"
-  "[&_details:not(.toc)>summary>:is(h1,h2,h3,h4,h5,h6)]:inline"
-  "[&_details:not(.toc)>summary>:is(h1,h2,h3,h4,h5,h6)]:hover:[&_span]:text-primary"
-  "[&_details:not(.toc)>summary>:is(h1,h2,h3,h4,h5,h6)]:hover:[&_span]:dark:text-darkmode-primary"
-  "[&_details:not(.toc)>summary]:[&_span]:inline-block"
-  "[&_details:not(.toc)>summary]:[&_span]:ml-2"
-  "[&_details[open]:not(.toc)>summary]:[&_span]:transition-transform"
-  "[&_details[open]:not(.toc)>summary]:[&_span]:rotate-90"
-  "[&_details[open]:not(.toc)>summary]:[&_span]:-translate-y-1"
-  "[&_details:not(.toc)>summary]:[&_span]:text-sm"
-  "[&_details:not(.toc)>summary]:[&_span]:align-middle"
-  "[&_details:not(.toc)>summary]:[&_span]:pl-2"
-  "[&_details:not(.toc)>summary]:[&_span]:text-text"
-  "[&_details:not(.toc)>summary]:[&_span]:dark:text-darkmode-text"
-  "[&_details:not(.toc)>summary]:[&_span]:hover:text-primary"
-  "[&_details:not(.toc)>summary]:[&_span]:dark:hover:text-darkmode-primary"
  -}}
-
-{{- if eq $size "lg" -}}
-  {{- $classes = $classes | append "prose-lg" -}}
-{{- end -}}
-
-{{- if or (eq $bullet "check") (eq $bullet "xmark") (eq $bullet "chevron-right") -}}
-  {{- $classes = $classes | append
-    "[&_ul]:list-none"
-    "[&_ul]:pl-0"
-    "[&_ul>li]:relative"
-    "[&_ul>li]:pl-7"
-    "[&_ul>li]:before:absolute"
-    "[&_ul>li]:before:left-0"
-    "[&_ul>li]:before:top-[0.15em]"
-    "[&_ul>li]:before:font-semibold"
-    "[&_ul>li]:before:text-primary"
-    "dark:[&_ul>li]:before:text-darkmode-primary"
-  -}}
-  {{- if eq $bullet "check" -}}
-    {{- $classes = $classes | append "[&_ul>li]:before:content-['✓']" -}}
-  {{- else if eq $bullet "xmark" -}}
-    {{- $classes = $classes | append "[&_ul>li]:before:content-['✕']" -}}
-  {{- else -}}
-    {{- $classes = $classes | append "[&_ul>li]:before:content-['›']" -}}
-  {{- end -}}
-{{- end -}}
 
 {{- delimit $classes " " -}}
