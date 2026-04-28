@@ -10,6 +10,6 @@
 {{ with .Site.Params.favicon }}
 <link rel="icon" type="image/svg+xml" href="{{ . | relURL }}">
 {{ else }}
-<link rel="icon" type="image/x-icon" href="{{ "/favicon.ico" | relURL }}">
+<link rel="icon" type="image/x-icon" href="{{ "favicon.ico" | relURL }}">
 {{ end }}
 <script src="https://kit.fontawesome.com/1dae46d9bf.js" crossorigin="anonymous"></script>
