@@ -96,11 +96,6 @@
     border-radius: var(--move-card-radius) var(--move-card-radius) 0 0;
   }
 
-  .move-card-title {
-    font-size: var(--move-title-size);
-    line-height: 1.25;
-  }
-
   .move-card-chevron {
     display: block;
     width: var(--move-chevron-size);

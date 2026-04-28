@@ -1,10 +1,10 @@
 {{ define "main" }}
 {{- $moves := sort .Params.moves "weight" "asc" -}}
 <section class="mx-auto max-w-3xl space-y-6 font-primary text-text">
-  <div class="sticky top-[3.75rem] z-40 flex items-center justify-between gap-4 bg-bg/95 py-2 backdrop-blur">
-    <h1 class="font-secondary text-4xl font-bold tracking-[0.18em] text-text sm:text-5xl">108 Moves</h1>
+  <div class="sticky top-[3.75rem] w-full z-40 flex items-center justify-between gap-4 bg-bg py-2">
+    <h1 class="font-secondary text-4xl font-bold tracking-[0.18em] text-text md:text-5xl pl-6 md:pl-0">108 Moves</h1>
 
-    <div class="flex items-center gap-3">
+    <div class="flex flex-wrap items-center md:justify-end justify-center gap-2">
     <button id="advanced-button" type="button" class="font-primary inline-flex cursor-pointer items-center gap-2 rounded-md bg-bg px-3 py-1.5 text-base text-text" title="Toggle advanced step descriptions for each move." aria-pressed="false">
       <span>Advanced</span>
       <span class="advanced-toggle-track" aria-hidden="true">
