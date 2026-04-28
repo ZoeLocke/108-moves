@@ -27,6 +27,8 @@ title = '108 Moves'
 [params]
   description = 'A step-by-step guide to the 108 moves of Tai Chi practised by Tai Chi Evolutions.'
   favicon = '/favicon.svg'
+  login_password = 'TCE2026'
+  recaptcha_site_key = ''  # Register at https://www.google.com/recaptcha/admin/create and paste your v2 site key here
 
 [taxonomies]
   category = 'categories'

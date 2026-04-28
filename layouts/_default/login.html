@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.LanguageCode | default "en" }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Sign In | {{ .Site.Title }}</title>
+  {{ with .Site.Params.favicon }}
+  <link rel="icon" type="image/svg+xml" href="{{ . | relURL }}">
+  {{ else }}
+  <link rel="icon" type="image/x-icon" href="{{ "/favicon.ico" | relURL }}">
+  {{ end }}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkR4j8Nt1XV0o0+igFsA47P5hk6S9L4b0k8Q==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  {{ with (templates.Defer (dict "key" "global")) }}
+    {{ partial "css.html" . }}
+  {{ end }}
+  {{ with .Site.Params.recaptcha_site_key }}
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  {{ end }}
+</head>
+<body class="bg-bg text-text font-primary min-h-screen flex items-center justify-center px-4">
+
+  <div class="w-full max-w-sm space-y-6 rounded-2xl border-2 border-primary bg-bg px-8 py-10 shadow-lg">
+
+    <div class="space-y-1 text-center">
+      <h1 class="font-secondary text-2xl font-bold tracking-wide">{{ .Site.Title }}</h1>
+      <p class="text-sm text-text/70">Members only. Enter the group password to continue.</p>
+    </div>
+
+    <form id="login-form" class="space-y-4" novalidate>
+      <div class="space-y-1">
+        <label for="password" class="block text-sm font-primary">Password</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          class="w-full rounded-md border-2 border-primary bg-bg px-3 py-2 text-sm text-text focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+          autocomplete="current-password"
+          required
+          autofocus
+        >
+      </div>
+
+      {{ with .Site.Params.recaptcha_site_key }}
+      <div class="g-recaptcha" data-sitekey="{{ . }}"></div>
+      {{ end }}
+
+      <p id="login-error" class="hidden text-sm text-secondary" role="alert" aria-live="polite"></p>
+
+      <button
+        type="submit"
+        class="w-full cursor-pointer rounded-md border-2 border-primary bg-bg px-4 py-2 text-sm font-secondary font-bold transition-colors duration-200 hover:bg-primary"
+      >
+        Sign In
+      </button>
+    </form>
+
+  </div>
+
+  <script>
+    (function () {
+      if (localStorage.getItem('tce_auth') === '1') {
+        location.replace('/');
+        return;
+      }
+
+      var form = document.getElementById('login-form');
+      var errorEl = document.getElementById('login-error');
+      var siteKey = '{{ .Site.Params.recaptcha_site_key }}';
+      var correctPassword = '{{ .Site.Params.login_password }}';
+
+      function showError(msg) {
+        errorEl.textContent = msg;
+        errorEl.classList.remove('hidden');
+      }
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        errorEl.classList.add('hidden');
+
+        if (siteKey) {
+          var token = (typeof grecaptcha !== 'undefined') ? grecaptcha.getResponse() : '';
+          if (!token) {
+            showError('Please complete the CAPTCHA.');
+            return;
+          }
+        }
+
+        var pw = document.getElementById('password').value;
+        if (pw === correctPassword) {
+          localStorage.setItem('tce_auth', '1');
+          location.replace('/');
+        } else {
+          showError('Incorrect password. Please try again.');
+          document.getElementById('password').value = '';
+          document.getElementById('password').focus();
+          if (siteKey && typeof grecaptcha !== 'undefined') {
+            grecaptcha.reset();
+          }
+        }
+      });
+    })();
+  </script>
+
+</body>
+</html>
