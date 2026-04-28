@@ -93,7 +93,7 @@
   .move-card-summary {
     gap: var(--move-card-gap);
     padding: var(--move-card-py) var(--move-card-px);
-    border-radius: var(--move-card-radius);
+    border-radius: var(--move-card-radius) var(--move-card-radius) 0 0;
   }
 
   .move-card-title {
