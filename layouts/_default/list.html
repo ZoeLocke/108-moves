@@ -1,0 +1,23 @@
+{{ define "main" }}
+<section class="space-y-6 font-primary text-text">
+  <h1 class="font-secondary text-3xl font-bold tracking-tight text-text">{{ .Title }}</h1>
+  {{ with .Content }}
+  <div class="space-y-4 text-text/80">
+    {{ . }}
+  </div>
+  {{ end }}
+
+  <ul class="space-y-4">
+    {{ range .Pages.ByDate.Reverse }}
+    <li class="rounded border border-text/20 p-4">
+      <a href="{{ .RelPermalink }}" class="font-secondary text-xl font-bold text-text">{{ .Title }}</a>
+      {{ with .Description }}
+      <p class="mt-2 text-text/70">{{ . }}</p>
+      {{ end }}
+    </li>
+    {{ else }}
+    <li class="text-text/70">No content found.</li>
+    {{ end }}
+  </ul>
+</section>
+{{ end }}

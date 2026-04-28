@@ -1,0 +1,14 @@
+<div class="w-full">
+  <div class="move-transition-line -mt-px mx-auto w-0.5 bg-secondary"></div>
+
+  {{ with .note }}
+  <div class="move-transition-note font-primary mx-auto flex w-fit items-center text-text">
+    <span class="inline-flex shrink-0 items-center justify-center leading-none text-secondary">
+      <i class="move-transition-icon inline-flex content-center text-center fa-solid fa-code-commit" aria-hidden="true"></i>
+    </span>
+    <p>{{ . }}</p>
+  </div>
+  {{ end }}
+
+  <div class="move-transition-line mx-auto w-0.5 bg-secondary"></div>
+</div>

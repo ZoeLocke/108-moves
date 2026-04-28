@@ -1,0 +1,121 @@
+{{ define "main" }}
+{{- $moves := sort .Params.moves "weight" "asc" -}}
+<section class="mx-auto max-w-3xl space-y-6 font-primary text-text">
+  <div class="sticky top-[3.75rem] z-40 flex items-center justify-between gap-4 bg-bg/95 py-2 backdrop-blur">
+    <h1 class="font-secondary text-4xl font-bold tracking-[0.18em] text-text sm:text-5xl">108 Moves</h1>
+
+    <div class="flex items-center gap-3">
+    <button id="advanced-button" type="button" class="font-primary inline-flex cursor-pointer items-center gap-2 rounded-md bg-bg px-3 py-1.5 text-sm text-text" title="Toggle advanced step descriptions for each move." aria-pressed="false">
+      <span>Advanced</span>
+      <span class="advanced-toggle-track" aria-hidden="true">
+        <span class="advanced-toggle-dot"></span>
+      </span>
+    </button>
+    <div class="relative" data-size-control>
+      <button id="size-menu-button" type="button" class="font-primary inline-flex cursor-pointer items-center gap-2 rounded-md border-2 border-primary bg-bg px-3 py-1.5 text-sm text-text transition-colors duration-200 hover:bg-primary" title="Choose card size to fit more moves on screen or improve readability." aria-haspopup="true" aria-expanded="false" aria-controls="size-menu">
+        Size: <span id="size-current">Normal</span>
+        <i id="size-menu-chevron" class="fa-solid fa-chevron-right rotate-0 transition-transform duration-300 ease-out motion-reduce:transition-none" aria-hidden="true"></i>
+      </button>
+      <div id="size-menu" class="absolute right-0 z-20 mt-2 hidden min-w-36 rounded-md border-2 border-primary bg-bg p-1 shadow-lg" role="menu" aria-labelledby="size-menu-button">
+        <button type="button" class="block w-full rounded px-3 py-2 text-left text-sm text-text transition-colors duration-200 hover:bg-primary" data-size-option="small" role="menuitemradio" aria-checked="false">Small</button>
+        <button type="button" class="block w-full rounded px-3 py-2 text-left text-sm text-text transition-colors duration-200 hover:bg-primary" data-size-option="normal" role="menuitemradio" aria-checked="true">Normal</button>
+        <button type="button" class="block w-full rounded px-3 py-2 text-left text-sm text-text transition-colors duration-200 hover:bg-primary" data-size-option="large" role="menuitemradio" aria-checked="false">Large</button>
+      </div>
+    </div>
+    </div>
+  </div>
+
+  <div id="move-flow" class="move-flow pt-2" data-size="normal" data-advanced="false">
+    {{- range $index, $move := $moves -}}
+      {{- partial "components/move-card.html" (dict "move" $move) -}}
+      {{- if lt (add $index 1) (len $moves) -}}
+        {{- partial "components/move-transition.html" (dict "note" $move.transition_note) -}}
+      {{- end -}}
+    {{- end -}}
+  </div>
+</section>
+
+<script>
+  (() => {
+    const flow = document.getElementById("move-flow");
+    const advancedButton = document.getElementById("advanced-button");
+
+    if (advancedButton && flow) {
+      const advancedKey = "moveFlowAdvanced";
+      const setAdvanced = (on) => {
+        flow.dataset.advanced = on ? "true" : "false";
+        advancedButton.setAttribute("aria-pressed", on ? "true" : "false");
+        localStorage.setItem(advancedKey, on ? "true" : "false");
+      };
+      const storedAdvanced = localStorage.getItem(advancedKey);
+      setAdvanced(storedAdvanced === "true");
+      advancedButton.addEventListener("click", () => {
+        setAdvanced(flow.dataset.advanced !== "true");
+      });
+    }
+
+    const sizeMenuButton = document.getElementById("size-menu-button");
+    const sizeMenu = document.getElementById("size-menu");
+    const sizeCurrent = document.getElementById("size-current");
+    const sizeMenuChevron = document.getElementById("size-menu-chevron");
+    if (!flow || !sizeMenuButton || !sizeMenu || !sizeCurrent || !sizeMenuChevron) return;
+
+    const key = "moveFlowSize";
+    const labels = { small: "Small", normal: "Normal", large: "Large" };
+
+    const setSize = (size) => {
+      if (!(size in labels)) return;
+      flow.dataset.size = size;
+      sizeCurrent.textContent = labels[size];
+      sizeMenu.querySelectorAll("[data-size-option]").forEach((button) => {
+        const checked = button.dataset.sizeOption === size;
+        button.setAttribute("aria-checked", checked ? "true" : "false");
+      });
+      localStorage.setItem(key, size);
+    };
+
+    const openMenu = () => {
+      sizeMenu.classList.remove("hidden");
+      sizeMenuButton.setAttribute("aria-expanded", "true");
+      sizeMenuChevron.classList.add("rotate-90");
+    };
+
+    const closeMenu = () => {
+      sizeMenu.classList.add("hidden");
+      sizeMenuButton.setAttribute("aria-expanded", "false");
+      sizeMenuChevron.classList.remove("rotate-90");
+    };
+
+    const stored = localStorage.getItem(key);
+    setSize(stored && labels[stored] ? stored : "normal");
+
+    sizeMenuButton.addEventListener("click", () => {
+      const expanded = sizeMenuButton.getAttribute("aria-expanded") === "true";
+      if (expanded) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+
+    sizeMenu.querySelectorAll("[data-size-option]").forEach((button) => {
+      button.addEventListener("click", () => {
+        setSize(button.dataset.sizeOption);
+        closeMenu();
+      });
+    });
+
+    document.addEventListener("click", (event) => {
+      if (!event.target.closest("[data-size-control]")) {
+        closeMenu();
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        closeMenu();
+      }
+    });
+  })();
+</script>
+{{ end }}

@@ -1,0 +1,187 @@
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-white text-slate-900 antialiased;
+  }
+
+  a {
+    @apply text-blue-700 underline-offset-2 hover:underline;
+  }
+
+  a:focus-visible,
+  button:focus-visible {
+    @apply rounded-sm outline-none ring-2 ring-blue-600 ring-offset-2;
+  }
+}
+
+@layer components {
+  .site-container {
+    @apply mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .move-flow {
+    --move-card-radius: 1.4rem;
+    --move-card-gap: 0.75rem;
+    --move-card-px: 1.5rem;
+    --move-card-py: 1.1rem;
+    --move-title-size: 1.65rem;
+    --move-chevron-size: 2rem;
+    --move-content-pt: 1rem;
+    --move-content-pb: 1.3rem;
+    --move-content-px: 1.5rem;
+    --move-steps-size: 1.35rem;
+    --move-steps-spacing: 0.6rem;
+    --move-steps-indent: 1.2rem;
+    --move-line-height: 0.9rem;
+    --move-note-size: 1.35rem;
+    --move-note-gap: 0.55rem;
+    --move-note-px: 0.9rem;
+    --move-note-py: 0.2rem;
+    --move-note-icon-size: 1.5rem;
+  }
+
+  .move-flow[data-size="small"] {
+    --move-card-radius: 1.1rem;
+    --move-card-gap: 0.55rem;
+    --move-card-px: 1.1rem;
+    --move-card-py: 0.8rem;
+    --move-title-size: 1.35rem;
+    --move-chevron-size: 1.6rem;
+    --move-content-pt: 0.75rem;
+    --move-content-pb: 1rem;
+    --move-content-px: 1.1rem;
+    --move-steps-size: 1.1rem;
+    --move-steps-spacing: 0.45rem;
+    --move-steps-indent: 1rem;
+    --move-line-height: 0.65rem;
+    --move-note-size: 1.05rem;
+    --move-note-gap: 0.4rem;
+    --move-note-px: 0.65rem;
+    --move-note-py: 0.1rem;
+    --move-note-icon-size: 1.2rem;
+  }
+
+  .move-flow[data-size="large"] {
+    --move-card-radius: 1.75rem;
+    --move-card-gap: 1rem;
+    --move-card-px: 1.75rem;
+    --move-card-py: 1.25rem;
+    --move-title-size: 1.875rem;
+    --move-chevron-size: 2.5rem;
+    --move-content-pt: 1.25rem;
+    --move-content-pb: 1.75rem;
+    --move-content-px: 1.75rem;
+    --move-steps-size: 1.5rem;
+    --move-steps-spacing: 0.75rem;
+    --move-steps-indent: 1.5rem;
+    --move-line-height: 1.25rem;
+    --move-note-size: 1.5rem;
+    --move-note-gap: 0.75rem;
+    --move-note-px: 1rem;
+    --move-note-py: 0.125rem;
+    --move-note-icon-size: 2rem;
+  }
+
+  .move-card {
+    border-radius: var(--move-card-radius);
+    margin-bottom: 0;
+  }
+
+  .move-card-summary {
+    gap: var(--move-card-gap);
+    padding: var(--move-card-py) var(--move-card-px);
+    border-radius: var(--move-card-radius);
+  }
+
+  .move-card-title {
+    font-size: var(--move-title-size);
+    line-height: 1.25;
+  }
+
+  .move-card-chevron {
+    display: block;
+    width: var(--move-chevron-size);
+    height: var(--move-chevron-size);
+  }
+
+  .move-card-content {
+    padding: var(--move-content-pt) var(--move-content-px) var(--move-content-pb);
+  }
+
+  .move-card-steps {
+    padding-left: var(--move-steps-indent);
+    font-size: var(--move-steps-size);
+    line-height: 1.35;
+  }
+
+  .move-card-steps li + li {
+    margin-top: var(--move-steps-spacing);
+  }
+
+  .move-card-steps-advanced {
+    display: none;
+  }
+
+  .move-flow[data-advanced="true"] .move-card-steps-basic {
+    display: none;
+  }
+
+  .move-flow[data-advanced="true"] .move-card-steps-advanced {
+    display: block;
+  }
+
+  .move-transition-line {
+    height: var(--move-line-height);
+  }
+
+  .move-transition-note {
+    gap: var(--move-note-gap);
+    padding: var(--move-note-py) var(--move-note-px);
+    font-size: var(--move-note-size);
+    line-height: 1.35;
+  }
+
+  .move-transition-icon {
+    display: block;
+    width: var(--move-note-icon-size);
+    height: var(--move-note-icon-size);
+    line-height: 1;
+  }
+
+  #advanced-button .advanced-toggle-track {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    width: 2.45rem;
+    height: 1.4rem;
+    border: 2px solid oklch(from var(--color-primary) l c h / 0.7);
+    border-radius: 999px;
+    background-color: var(--color-bg);
+    transition: background-color 200ms ease, border-color 200ms ease;
+  }
+
+  #advanced-button .advanced-toggle-dot {
+    position: absolute;
+    top: 50%;
+    left: 0.15rem;
+    width: 0.9rem;
+    height: 0.9rem;
+    border-radius: 999px;
+    background-color: var(--color-primary);
+    transform: translate(0, -50%);
+    transition: transform 220ms ease, background-color 200ms ease;
+  }
+
+  #advanced-button[aria-pressed="true"] .advanced-toggle-track {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+  }
+
+  #advanced-button[aria-pressed="true"] .advanced-toggle-dot {
+    background-color: var(--color-secondary);
+    transform: translate(1.02rem, -50%);
+  }
+}

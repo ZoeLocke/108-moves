@@ -1,0 +1,49 @@
+baseURL = 'https://example.org/'
+languageCode = 'en-gb'
+title = '108 Moves'
+
+[pagination]
+  pagerSize = 10
+
+[build]
+  [build.buildStats]
+    enable = true
+  [[build.cachebusters]]
+    source = 'assets/notwatching/hugo_stats\.json'
+    target = 'css'
+  [[build.cachebusters]]
+    source = '(postcss|tailwind)\.config\.js'
+    target = 'css'
+
+[module]
+  [[module.mounts]]
+    source = 'assets'
+    target = 'assets'
+  [[module.mounts]]
+    disableWatch = true
+    source = 'hugo_stats.json'
+    target = 'assets/notwatching/hugo_stats.json'
+
+[params]
+  description = 'A step-by-step guide to the 108 moves of Tai Chi practised by Tai Chi Evolutions.'
+  favicon = '/favicon.svg'
+
+[taxonomies]
+  category = 'categories'
+  tag = 'tags'
+
+[menu]
+  [[menu.main]]
+    name = 'Home'
+    pageRef = '/'
+    weight = 1
+  [[menu.main]]
+    name = 'Tutorial'
+    pageRef = '/tutorial'
+    weight = 2
+
+
+[outputs]
+  home = ['HTML', 'RSS', 'JSON']
+  page = ['HTML']
+  section = ['HTML', 'RSS']

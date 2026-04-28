@@ -1,0 +1,16 @@
+{{ define "main" }}
+<article class="space-y-6 font-primary text-text">
+  <header class="space-y-2">
+    <h1 class="font-secondary text-3xl font-bold tracking-tight text-text">{{ .Title }}</h1>
+    {{ with .Date }}
+    <p class="text-sm text-text/60">
+      <time datetime="{{ .Format "2006-01-02" }}">{{ .Format "2 January 2006" }}</time>
+    </p>
+    {{ end }}
+  </header>
+  {{ $bullet := "" }}
+  <div class="mt-4 {{ partial "components/rich-content-classes.html" (dict "bullet" $bullet) }}">
+    {{ .Content }}
+  </div>
+</article>
+{{ end }}

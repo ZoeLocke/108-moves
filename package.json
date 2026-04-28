@@ -1,0 +1,26 @@
+{
+    "name": "hugo-tailwind-starter",
+    "version": "1.0.0",
+    "description": "Bare-bones Hugo site with Tailwind CSS v4 integration",
+    "main": "postcss.config.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "type": "commonjs",
+    "devDependencies": {
+        "@tailwindcss/cli": "^4.2.1",
+        "@tailwindcss/typography": "^0.5.19",
+        "tailwindcss": "^4.2.1"
+    },
+    "repository": {
+        "type": "git",
+        "url": ""
+    },
+    "bugs": {
+        "url": ""
+    },
+    "homepage": ""
+}

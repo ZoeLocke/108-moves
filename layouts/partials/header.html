@@ -1,0 +1,15 @@
+<header class="sticky top-0 z-50 bg-primary">
+  <div class="site-container flex items-center justify-between py-4">
+    <a href="{{ "/" | relLangURL }}" class="font-secondary text-lg font-bold text-text no-underline">
+      {{ .Site.Title }}
+    </a>
+
+    <nav aria-label="Main navigation" class="flex gap-5 text-sm font-primary">
+      {{ range .Site.Menus.main }}
+      <a href="{{ .URL | relLangURL }}" class="text-text">
+        {{ .Name }}
+      </a>
+      {{ end }}
+    </nav>
+  </div>
+</header>

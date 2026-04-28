@@ -1,0 +1,17 @@
+@import "tailwindcss";
+@source "hugo_stats.json";
+
+@theme {
+	--font-primary: Arial, sans-serif;
+	--font-secondary: "Roboto", Arial, sans-serif;
+
+	--color-primary: oklch(72.562% 0.03913 132.776);
+	--color-secondary: oklch(67.170% 0.07077 14.800);
+	--color-text: oklch(0% 0 0);
+	--color-bg: oklch(96.115% 0 89.876);
+
+	--color-off-black: oklch(24.776% 0 89.876);
+	--color-body: oklch(96.115% 0 89.876);
+}
+
+@import "modules/layout.css";
