@@ -1,24 +1,24 @@
 {{- $move := .move -}}
-<details class="move-card group md:w-[90%] w-[99%] mx-auto overflow-hidden text-text shadow-md transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-lg motion-reduce:transition-none motion-reduce:hover:translate-y-0">
-  <summary class="move-card-summary bg-primary flex cursor-pointer list-none items-center justify-between marker:content-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-text focus-visible:ring-offset-2">
+<details class="group w-full md:w-11/12 mx-auto overflow-hidden rounded-3xl group-data-[size=small]/move-flow:rounded-2xl group-data-[size=large]/move-flow:rounded-4xl text-text shadow-md transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-lg motion-reduce:transition-none motion-reduce:hover:translate-y-0">
+  <summary class="bg-primary flex cursor-pointer list-none items-center justify-between gap-3 group-data-[size=small]/move-flow:gap-2 group-data-[size=large]/move-flow:gap-4 rounded-t-3xl group-data-[size=small]/move-flow:rounded-t-2xl group-data-[size=large]/move-flow:rounded-t-4xl px-6 group-data-[size=small]/move-flow:px-4 group-data-[size=large]/move-flow:px-7 py-4 group-data-[size=small]/move-flow:py-3 group-data-[size=large]/move-flow:py-5 marker:content-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-text focus-visible:ring-offset-2">
     <h2 class="text-lg md:text-xl font-secondary font-bold tracking-[0.02em] transition-colors duration-200">{{ $move.Params.weight }}: {{ $move.Title }}</h2>
-    <span class="inline-flex shrink-0 items-center justify-center text-text transition-colors duration-200" aria-hidden="true">
-      <i class="move-card-chevron inline-flex content-center text-center fa-solid fa-chevron-right rotate-0 transition-transform duration-300 ease-out group-open:rotate-90 motion-reduce:transition-none"></i>
+    <span class="inline-flex shrink-0 items-center justify-center text-text" aria-hidden="true">
+      <i class="block h-8 w-8 group-data-[size=small]/move-flow:h-6 group-data-[size=small]/move-flow:w-6 group-data-[size=large]/move-flow:h-10 group-data-[size=large]/move-flow:w-10 fa-solid fa-chevron-right rotate-0 transition-transform duration-300 ease-out group-open:rotate-90 motion-reduce:transition-none"></i>
     </span>
   </summary>
 
   {{- $hasContent := or $move.Params.steps $move.Content -}}
   {{ if $hasContent }}
-  <div class="move-card-content bg-white">
+  <div class="bg-white px-6 group-data-[size=small]/move-flow:px-4 group-data-[size=large]/move-flow:px-7 pt-4 group-data-[size=small]/move-flow:pt-3 group-data-[size=large]/move-flow:pt-5 pb-5 group-data-[size=small]/move-flow:pb-4 group-data-[size=large]/move-flow:pb-7">
     {{ with $move.Params.steps }}
-    <ol class="move-card-steps move-card-steps-basic font-primary list-decimal text-base md:text-lg">
+    <ol class="list-decimal ps-5 group-data-[size=small]/move-flow:ps-4 group-data-[size=large]/move-flow:ps-6 text-xl group-data-[size=small]/move-flow:text-lg group-data-[size=large]/move-flow:text-2xl leading-snug [&>li+li]:mt-2.5 group-data-[size=small]/move-flow:[&>li+li]:mt-2 group-data-[size=large]/move-flow:[&>li+li]:mt-3 group-data-[advanced=true]/move-flow:hidden">
       {{- range . -}}
       <li>{{ . }}</li>
       {{- end -}}
     </ol>
     {{ end }}
     {{ with $move.Content }}
-    <div class="move-card-steps-advanced font-primary text-base md:text-lg">
+    <div class="hidden text-xl group-data-[size=small]/move-flow:text-lg group-data-[size=large]/move-flow:text-2xl leading-snug group-data-[advanced=true]/move-flow:block [&_ol]:m-0 [&_ol]:list-decimal [&_ol]:ps-5 group-data-[size=small]/move-flow:[&_ol]:ps-4 group-data-[size=large]/move-flow:[&_ol]:ps-6 [&_ol]:leading-snug [&_li]:m-0 [&_li+li]:mt-2.5 group-data-[size=small]/move-flow:[&_li+li]:mt-2 group-data-[size=large]/move-flow:[&_li+li]:mt-3">
       {{ . }}
     </div>
     {{ end }}

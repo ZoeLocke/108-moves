@@ -2,14 +2,14 @@
 {{- $moves := where .Site.RegularPages "Section" "moves" -}}
 {{- $moves = sort $moves "Params.weight" "asc" -}}
 <section class="mx-auto max-w-3xl space-y-6 font-primary text-text">
-  <div class="sticky top-[3.75rem] w-full z-40 flex items-center justify-between gap-4 bg-bg py-2">
+  <div class="sticky top-16 w-full z-40 flex items-center justify-between gap-4 bg-bg py-2">
     <h1 class="font-secondary text-4xl font-bold tracking-[0.18em] text-text md:text-5xl pl-6 md:pl-0">108 Moves</h1>
 
     <div class="flex flex-wrap items-center md:justify-end justify-center gap-2">
-    <button id="advanced-button" type="button" class="font-primary inline-flex cursor-pointer items-center gap-2 rounded-md bg-bg px-3 py-1.5 text-base text-text" title="Toggle advanced step descriptions for each move." aria-pressed="false">
+    <button id="advanced-button" type="button" class="font-primary inline-flex cursor-pointer items-center gap-2 rounded-md bg-bg px-3 py-1.5 text-base text-text [&_[data-toggle-track]]:relative [&_[data-toggle-track]]:inline-flex [&_[data-toggle-track]]:h-6 [&_[data-toggle-track]]:w-10 [&_[data-toggle-track]]:items-center [&_[data-toggle-track]]:rounded-full [&_[data-toggle-track]]:border-2 [&_[data-toggle-track]]:border-[oklch(from_var(--color-primary)_l_c_h_/_0.7)] [&_[data-toggle-track]]:bg-bg [&_[data-toggle-track]]:transition-colors [&_[data-toggle-track]]:duration-200 [&_[data-toggle-dot]]:absolute [&_[data-toggle-dot]]:left-0.5 [&_[data-toggle-dot]]:top-1/2 [&_[data-toggle-dot]]:h-3.5 [&_[data-toggle-dot]]:w-3.5 [&_[data-toggle-dot]]:-translate-y-1/2 [&_[data-toggle-dot]]:rounded-full [&_[data-toggle-dot]]:bg-primary [&_[data-toggle-dot]]:transition-transform [&_[data-toggle-dot]]:duration-200 [&_[data-toggle-dot]]:ease-out [&[aria-pressed='true']_[data-toggle-track]]:border-primary [&[aria-pressed='true']_[data-toggle-track]]:bg-primary [&[aria-pressed='true']_[data-toggle-dot]]:translate-x-4 [&[aria-pressed='true']_[data-toggle-dot]]:bg-secondary" title="Toggle advanced step descriptions for each move." aria-pressed="false">
       <span>Advanced</span>
-      <span class="advanced-toggle-track" aria-hidden="true">
-        <span class="advanced-toggle-dot"></span>
+      <span data-toggle-track aria-hidden="true">
+        <span data-toggle-dot></span>
       </span>
     </button>
     <div class="relative" data-size-control>
@@ -26,7 +26,7 @@
     </div>
   </div>
 
-  <div id="move-flow" class="move-flow pt-2" data-size="normal" data-advanced="false">
+  <div id="move-flow" class="group/move-flow pt-2" data-size="normal" data-advanced="false">
     {{- range $index, $move := $moves -}}
       {{- partial "components/move-card.html" (dict "move" $move) -}}
       {{- if lt (add $index 1) (len $moves) -}}

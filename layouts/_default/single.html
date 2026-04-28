@@ -8,8 +8,7 @@
     </p>
     {{ end }}
   </header>
-  {{ $bullet := "" }}
-  <div class="mt-4 {{ partial "components/rich-content-classes.html" (dict "bullet" $bullet) }}">
+  <div class="mt-4 [&_p]:mb-6 [&_p]:last:mb-0">
     {{ .Content }}
   </div>
 </article>
