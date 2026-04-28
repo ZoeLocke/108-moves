@@ -59,7 +59,7 @@
 
   <script>
     (function () {
-      if (localStorage.getItem('tce_auth') === '1') {
+      if (sessionStorage.getItem('tce_auth') === '1') {
         location.replace('/');
         return;
       }
@@ -88,7 +88,7 @@
 
         var pw = document.getElementById('password').value;
         if (pw === correctPassword) {
-          localStorage.setItem('tce_auth', '1');
+          sessionStorage.setItem('tce_auth', '1');
           location.replace('/');
         } else {
           showError('Incorrect password. Please try again.');
