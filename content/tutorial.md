@@ -1,6 +1,5 @@
 ---
-title: About
-date: 2026-04-28
+title: Tutorial
 description: A guide to using 108 Moves.
 draft: false
 ---
