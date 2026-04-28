@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ .Site.Language.LanguageCode | default "en" }}">
 <head>
-    <script>(function(){if(typeof sessionStorage!=='undefined'&&!sessionStorage.getItem('tce_auth')){window.location.replace('/login/');}})();</script>
+    <script>(function(){if(typeof sessionStorage!=='undefined'&&!sessionStorage.getItem('tce_auth')){window.location.replace({{ "/login/" | relURL | jsonify }});}})();</script>
     {{ partial "head.html" . }}
     {{ with (templates.Defer (dict "key" "global")) }}
         {{ partial "css.html" . }}
