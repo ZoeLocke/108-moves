@@ -1,6 +1,6 @@
 {{- $move := .move -}}
-<details class="move-card group w-full bg-primary text-text shadow-md transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-lg motion-reduce:transition-none motion-reduce:hover:translate-y-0">
-  <summary class="move-card-summary flex cursor-pointer list-none items-center justify-between marker:content-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-text focus-visible:ring-offset-2">
+<details class="move-card group w-full overflow-hidden text-text shadow-md transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-lg motion-reduce:transition-none motion-reduce:hover:translate-y-0">
+  <summary class="move-card-summary bg-primary flex cursor-pointer list-none items-center justify-between marker:content-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-text focus-visible:ring-offset-2">
     <h2 class="move-card-title font-secondary font-bold tracking-[0.02em] transition-colors duration-200">{{ $move.weight }}: {{ $move.name }}</h2>
     <span class="inline-flex shrink-0 items-center justify-center text-text transition-colors duration-200" aria-hidden="true">
       <i class="move-card-chevron inline-flex content-center text-center fa-solid fa-chevron-right rotate-0 transition-transform duration-300 ease-out group-open:rotate-90 motion-reduce:transition-none"></i>
@@ -9,7 +9,7 @@
 
   {{- $hasContent := or $move.steps $move.steps_advanced -}}
   {{ if $hasContent }}
-  <div class="move-card-content border-t border-text">
+  <div class="move-card-content bg-white">
     {{ with $move.steps }}
     <ol class="move-card-steps move-card-steps-basic font-primary list-decimal">
       {{- range . -}}
