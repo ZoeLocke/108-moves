@@ -128,6 +128,23 @@
     display: block;
   }
 
+  .move-card-steps-advanced ol {
+    margin: 0;
+    padding-left: var(--move-steps-indent);
+    font-size: inherit;
+    line-height: 1.35;
+    list-style: decimal;
+  }
+
+  .move-card-steps-advanced li {
+    margin: 0;
+    line-height: inherit;
+  }
+
+  .move-card-steps-advanced li + li {
+    margin-top: var(--move-steps-spacing);
+  }
+
   .move-transition-line {
     height: var(--move-line-height);
   }

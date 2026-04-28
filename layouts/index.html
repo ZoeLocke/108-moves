@@ -1,5 +1,6 @@
 {{ define "main" }}
-{{- $moves := sort .Params.moves "weight" "asc" -}}
+{{- $moves := where .Site.RegularPages "Section" "moves" -}}
+{{- $moves = sort $moves "Params.weight" "asc" -}}
 <section class="mx-auto max-w-3xl space-y-6 font-primary text-text">
   <div class="sticky top-[3.75rem] w-full z-40 flex items-center justify-between gap-4 bg-bg py-2">
     <h1 class="font-secondary text-4xl font-bold tracking-[0.18em] text-text md:text-5xl pl-6 md:pl-0">108 Moves</h1>
@@ -29,7 +30,7 @@
     {{- range $index, $move := $moves -}}
       {{- partial "components/move-card.html" (dict "move" $move) -}}
       {{- if lt (add $index 1) (len $moves) -}}
-        {{- partial "components/move-transition.html" (dict "note" $move.transition_note) -}}
+        {{- partial "components/move-transition.html" (dict "note" $move.Params.transition_note) -}}
       {{- end -}}
     {{- end -}}
   </div>
