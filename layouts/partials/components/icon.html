@@ -32,6 +32,18 @@
 <span class="inline-flex shrink-0 items-center justify-center leading-none {{ $textClass }} {{ $hoverTextClass }}">
 	<i class="fa-solid fa-right-from-bracket {{ $textClass }} {{ $hoverTextClass }} {{ $opacityClass }}" aria-hidden="true"></i>
 </span>
+{{- else if eq $type "theme-system" -}}
+<span class="inline-flex shrink-0 items-center justify-center leading-none {{ $textClass }} {{ $hoverTextClass }}">
+	<i class="fa-solid fa-desktop {{ $textClass }} {{ $hoverTextClass }} {{ $opacityClass }}" aria-hidden="true"></i>
+</span>
+{{- else if eq $type "theme-light" -}}
+<span class="inline-flex shrink-0 items-center justify-center leading-none {{ $textClass }} {{ $hoverTextClass }}">
+	<i class="fa-solid fa-sun {{ $textClass }} {{ $hoverTextClass }} {{ $opacityClass }}" aria-hidden="true"></i>
+</span>
+{{- else if eq $type "theme-dark" -}}
+<span class="inline-flex shrink-0 items-center justify-center leading-none {{ $textClass }} {{ $hoverTextClass }}">
+	<i class="fa-solid fa-moon {{ $textClass }} {{ $hoverTextClass }} {{ $opacityClass }}" aria-hidden="true"></i>
+</span>
 {{- else if eq $type "chevron-right" -}}
 <i class="fa-solid fa-chevron-right leading-none rotate-0 transition-transform duration-300 ease-out group-open:rotate-90 motion-reduce:transition-none {{ $textClass }} {{ $hoverTextClass }} {{ $opacityClass }}" aria-hidden="true"></i>
 {{- end -}}

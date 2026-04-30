@@ -11,9 +11,47 @@
 	--color-not-learned: oklch(92% 0.045 20);
 	--color-text: oklch(0% 0 0);
 	--color-bg: oklch(96.115% 0 89.876);
+	--color-surface: oklch(99% 0 89.876);
+	--color-surface-muted: oklch(96.8% 0.004 89.876);
 
 	--color-off-black: oklch(24.776% 0 89.876);
 	--color-body: oklch(96.115% 0 89.876);
+}
+
+@layer base {
+	html {
+		color-scheme: light;
+	}
+
+	@media (prefers-color-scheme: dark) {
+		html:not([data-theme="light"]) {
+			color-scheme: dark;
+			--color-primary: oklch(81% 0.05 150);
+			--color-secondary: oklch(79% 0.085 34);
+			--color-learned: oklch(35% 0.04 145);
+			--color-not-learned: oklch(35% 0.04 30);
+			--color-text: oklch(95.5% 0.006 89.876);
+			--color-bg: oklch(20% 0.008 260);
+			--color-surface: oklch(26% 0.01 260);
+			--color-surface-muted: oklch(30% 0.01 260);
+			--color-off-black: oklch(14% 0.005 260);
+			--color-body: oklch(17% 0.008 260);
+		}
+	}
+
+	html[data-theme="dark"] {
+		color-scheme: dark;
+		--color-primary: oklch(81% 0.05 150);
+		--color-secondary: oklch(79% 0.085 34);
+		--color-learned: oklch(35% 0.04 145);
+		--color-not-learned: oklch(35% 0.04 30);
+		--color-text: oklch(95.5% 0.006 89.876);
+		--color-bg: oklch(20% 0.008 260);
+		--color-surface: oklch(26% 0.01 260);
+		--color-surface-muted: oklch(30% 0.01 260);
+		--color-off-black: oklch(14% 0.005 260);
+		--color-body: oklch(17% 0.008 260);
+	}
 }
 
 @import "modules/layout.css";

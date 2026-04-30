@@ -14,13 +14,14 @@
   {{ with (templates.Defer (dict "key" "global")) }}
     {{ partial "css.html" . }}
   {{ end }}
+  <script>(function(){try{var mode=localStorage.getItem('siteThemeMode');if(mode==='light'||mode==='dark'){document.documentElement.setAttribute('data-theme',mode);}else{document.documentElement.removeAttribute('data-theme');}}catch(e){}})();</script>
   {{ with .Site.Params.recaptcha_site_key }}
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   {{ end }}
 </head>
 <body class="flex min-h-screen items-center justify-center bg-linear-to-b from-body via-bg to-bg px-4 font-primary text-text antialiased">
 
-  <div class="w-full max-w-sm space-y-6 rounded-3xl border border-primary/25 bg-white/90 px-8 py-10 shadow-xl ring-1 ring-primary/10">
+  <div class="w-full max-w-sm space-y-6 rounded-3xl border border-primary/25 bg-surface/90 px-8 py-10 shadow-xl ring-1 ring-primary/20">
 
     <div class="space-y-1 text-center">
       <h1 class="font-secondary text-2xl font-bold tracking-wide text-primary">{{ .Site.Title }}</h1>
@@ -34,7 +35,7 @@
           type="password"
           id="password"
           name="password"
-          class="w-full rounded-xl border border-primary/35 bg-white px-3 py-2 text-sm text-text shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+          class="w-full rounded-xl border border-primary/35 bg-surface-muted px-3 py-2 text-sm text-text shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-bg"
           autocomplete="current-password"
           required
           autofocus

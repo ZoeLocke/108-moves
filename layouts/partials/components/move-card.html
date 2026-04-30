@@ -19,7 +19,7 @@
 
   {{- $hasContent := or $move.Params.steps $move.Content -}}
   {{ if $hasContent }}
-  <div class="border-t border-primary/10 bg-white px-6 pb-5 pt-4 group-data-[size=small]/move-flow:px-4 group-data-[size=small]/move-flow:pb-4 group-data-[size=small]/move-flow:pt-3 group-data-[size=large]/move-flow:px-7 group-data-[size=large]/move-flow:pb-7 group-data-[size=large]/move-flow:pt-5">
+  <div class="border-t border-primary/20 bg-surface px-6 pb-5 pt-4 group-data-[size=small]/move-flow:px-4 group-data-[size=small]/move-flow:pb-4 group-data-[size=small]/move-flow:pt-3 group-data-[size=large]/move-flow:px-7 group-data-[size=large]/move-flow:pb-7 group-data-[size=large]/move-flow:pt-5">
     {{ with $move.Params.steps }}
     <ol class="list-decimal ps-5 text-base leading-relaxed md:text-lg group-data-[advanced=true]/move-flow:hidden group-data-[size=small]/move-flow:ps-4 group-data-[size=small]/move-flow:text-sm group-data-[size=small]/move-flow:[&>li+li]:mt-1.5 group-data-[size=large]/move-flow:ps-6 group-data-[size=large]/move-flow:text-xl group-data-[size=large]/move-flow:[&>li+li]:mt-3 [&>li+li]:mt-2">
       {{- range . -}}

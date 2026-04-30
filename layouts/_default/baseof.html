@@ -2,13 +2,14 @@
 <html lang="{{ .Site.Language.LanguageCode | default "en" }}">
 <head>
     <script>(function(){if(typeof sessionStorage!=='undefined'&&!sessionStorage.getItem('tce_auth')){window.location.replace('{{ "login/" | absLangURL }}');}})();</script>
+    <script>(function(){try{var mode=localStorage.getItem('siteThemeMode');if(mode==='light'||mode==='dark'){document.documentElement.setAttribute('data-theme',mode);}else{document.documentElement.removeAttribute('data-theme');}}catch(e){}})();</script>
     {{ partial "head.html" . }}
     {{ with (templates.Defer (dict "key" "global")) }}
         {{ partial "css.html" . }}
     {{ end }}
 </head>
 <body class="min-h-screen bg-linear-to-b from-body via-bg to-bg font-primary text-text antialiased">
-    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-white focus:px-3 focus:py-2 focus:shadow-lg">
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-surface focus:px-3 focus:py-2 focus:shadow-lg">
         Skip to main content
     </a>
 
