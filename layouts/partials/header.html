@@ -1,25 +1,80 @@
-<header class="sticky top-0 z-50 bg-primary shadow-md">
-  <div class="mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8 flex items-center justify-between py-4">
-    <a href="{{ "" | absLangURL }}" class="font-secondary text-lg font-bold text-text hover:text-body transition-colors duration-200 no-underline">
+<header id="site-header" class="sticky top-0 z-50 border-b border-primary/30 bg-bg/95 shadow-sm backdrop-blur supports-backdrop-filter:bg-bg/80">
+  <div class="mx-auto flex w-full max-w-5xl items-center justify-between px-4 py-3 sm:px-6 md:py-4 lg:px-8">
+    <a href="{{ "" | absLangURL }}" class="font-secondary text-xl font-bold tracking-wide text-primary no-underline transition-colors duration-200 hover:text-secondary">
       {{ .Site.Title }}
     </a>
 
-    <nav aria-label="Main navigation" class="flex items-center gap-5 text-sm font-primary">
+    <nav aria-label="Main navigation" class="flex flex-wrap items-center justify-end gap-1.5 text-sm font-primary md:gap-3">
       {{ range .Site.Menus.main }}
-      <a href="{{ .URL | relLangURL }}" class="text-text hover:text-body transition-colors duration-200 no-underline text-lg" title="{{ .Name }}">
+      <a href="{{ .URL | relLangURL }}" class="inline-flex items-center rounded-full px-2.5 py-1.5 text-sm font-medium text-text/80 no-underline transition-colors duration-200 hover:bg-primary/20 hover:text-primary sm:px-3 sm:text-base" title="{{ .Name }}">
         {{ .Name }}
       </a>
       {{ end }}
-      <button id="logout-button" type="button" class="group inline-flex cursor-pointer items-center gap-1.5 text-text transition-colors duration-200 hover:text-body text-lg ml-6" title="Sign out">
+
+      <button id="theme-toggle-button" type="button" class="group ml-1 inline-flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-primary/40 bg-surface text-sm font-medium text-text/80 shadow-sm transition-colors duration-200 hover:border-primary hover:bg-primary/15 hover:text-primary sm:ml-2" title="Change theme" aria-label="Theme mode: system" data-mode="system">
+        <span class="sr-only" id="theme-toggle-text">Theme mode: system</span>
+        <span data-theme-icon="system" aria-hidden="true">{{- partial "components/icon.html" (dict "type" "theme-system" "color" "current") -}}</span>
+        <span data-theme-icon="light" class="hidden" aria-hidden="true">{{- partial "components/icon.html" (dict "type" "theme-light" "color" "current") -}}</span>
+        <span data-theme-icon="dark" class="hidden" aria-hidden="true">{{- partial "components/icon.html" (dict "type" "theme-dark" "color" "current") -}}</span>
+      </button>
+
+      <button id="logout-button" type="button" class="group ml-1 inline-flex cursor-pointer items-center gap-1.5 rounded-full border border-primary/40 bg-surface px-2.5 py-1.5 text-sm font-medium text-text/80 shadow-sm transition-colors duration-200 hover:border-primary hover:bg-primary/15 hover:text-primary sm:ml-2 sm:px-3 sm:text-base md:ml-3" title="Sign out">
         {{- partial "components/icon.html" (dict "type" "log-out" "color" "current") -}}
-        <span>Sign out</span>
+        <span class="hidden sm:inline">Sign out</span>
       </button>
     </nav>
     <script>
-      document.getElementById('logout-button').addEventListener('click', function () {
-        sessionStorage.removeItem('tce_auth');
-        window.location.replace('{{ "login/" | absLangURL }}');
-      });
+      (() => {
+        const themeToggleButton = document.getElementById('theme-toggle-button');
+        const themeToggleText = document.getElementById('theme-toggle-text');
+        const root = document.documentElement;
+        const themeKey = 'siteThemeMode';
+        const modes = ['system', 'light', 'dark'];
+
+        const applyThemeMode = (mode) => {
+          const normalizedMode = modes.includes(mode) ? mode : 'system';
+
+          if (normalizedMode === 'system') {
+            root.removeAttribute('data-theme');
+          } else {
+            root.setAttribute('data-theme', normalizedMode);
+          }
+
+          if (themeToggleButton) {
+            themeToggleButton.dataset.mode = normalizedMode;
+            themeToggleButton.setAttribute('aria-label', 'Theme mode: ' + normalizedMode);
+            themeToggleButton.querySelectorAll('[data-theme-icon]').forEach((iconWrapper) => {
+              iconWrapper.classList.toggle('hidden', iconWrapper.dataset.themeIcon !== normalizedMode);
+            });
+          }
+
+          if (themeToggleText) {
+            themeToggleText.textContent = 'Theme mode: ' + normalizedMode;
+          }
+
+          localStorage.setItem(themeKey, normalizedMode);
+        };
+
+        if (themeToggleButton) {
+          const storedMode = localStorage.getItem(themeKey);
+          applyThemeMode(storedMode && modes.includes(storedMode) ? storedMode : 'system');
+
+          themeToggleButton.addEventListener('click', () => {
+            const currentMode = themeToggleButton.dataset.mode || 'system';
+            const currentIndex = modes.indexOf(currentMode);
+            const nextMode = modes[(currentIndex + 1) % modes.length];
+            applyThemeMode(nextMode);
+          });
+        }
+
+        const logoutButton = document.getElementById('logout-button');
+        if (logoutButton) {
+          logoutButton.addEventListener('click', function () {
+            sessionStorage.removeItem('tce_auth');
+            window.location.replace('{{ "login/" | absLangURL }}');
+          });
+        }
+      })();
     </script>
   </div>
 </header>

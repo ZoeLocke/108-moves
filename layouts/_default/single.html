@@ -1,14 +1,14 @@
 {{ define "main" }}
-<article class="space-y-6 font-primary text-text">
-  <header class="space-y-2">
-    <h1 class="font-secondary text-3xl font-bold tracking-tight text-text">{{ .Title }}</h1>
+<article class="space-y-7 rounded-3xl border border-primary/20 bg-surface/85 p-6 font-primary text-text shadow-sm md:p-8">
+  <header class="space-y-2 border-b border-primary/15 pb-4">
+    <h1 class="font-secondary text-3xl font-bold tracking-tight text-primary md:text-4xl">{{ .Title }}</h1>
     {{ with .Date }}
-    <p class="text-sm text-text/60">
+    <p class="text-sm font-medium text-text/60">
       <time datetime="{{ .Format "2006-01-02" }}">{{ .Format "2 January 2006" }}</time>
     </p>
     {{ end }}
   </header>
-  <div class="mt-4 [&_p]:mb-6 [&_p]:last:mb-0">
+  <div class="mt-2 [&_p]:mb-5 [&_p]:last:mb-0">
     {{ .Content }}
   </div>
 </article>

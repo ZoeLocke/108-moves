@@ -4,15 +4,15 @@
   }
 
   body {
-    @apply bg-white text-slate-900 antialiased;
+    @apply bg-bg text-text antialiased;
   }
 
   a {
-    @apply text-blue-700 underline-offset-2 hover:underline;
+    @apply text-primary underline-offset-2 hover:text-secondary hover:underline;
   }
 
   a:focus-visible,
   button:focus-visible {
-    @apply rounded-sm outline-none ring-2 ring-blue-600 ring-offset-2;
+    @apply rounded-sm outline-none ring-2 ring-primary ring-offset-2 ring-offset-bg;
   }
 }

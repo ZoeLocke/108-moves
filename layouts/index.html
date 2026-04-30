@@ -1,31 +1,8 @@
 {{ define "main" }}
 {{- $moves := where .Site.RegularPages "Section" "moves" -}}
 {{- $moves = sort $moves "Params.weight" "asc" -}}
-<section class="mx-auto -mt-10 max-w-3xl space-y-6 font-primary text-text">
-  <div class="sticky top-[60px] w-full z-40 flex items-center justify-between gap-4 bg-bg py-2">
-    <h1 class="font-secondary text-4xl font-bold tracking-[0.18em] text-text md:text-5xl pl-6 md:pl-0">108 Moves</h1>
-
-    <div class="flex flex-wrap items-center md:justify-end justify-center gap-2">
-    <button id="advanced-button" type="button" class="relative font-primary inline-flex cursor-pointer items-center gap-2 rounded-md bg-bg px-3 py-1.5 text-base text-text [&_[data-toggle-track]]:relative [&_[data-toggle-track]]:inline-flex [&_[data-toggle-track]]:h-6 [&_[data-toggle-track]]:w-10 [&_[data-toggle-track]]:items-center [&_[data-toggle-track]]:rounded-full [&_[data-toggle-track]]:border-2 [&_[data-toggle-track]]:border-[oklch(from_var(--color-primary)_l_c_h_/_0.7)] [&_[data-toggle-track]]:bg-bg [&_[data-toggle-track]]:transition-colors [&_[data-toggle-track]]:duration-200 [&_[data-toggle-dot]]:absolute [&_[data-toggle-dot]]:left-0.5 [&_[data-toggle-dot]]:top-1/2 [&_[data-toggle-dot]]:h-3.5 [&_[data-toggle-dot]]:w-3.5 [&_[data-toggle-dot]]:-translate-y-1/2 [&_[data-toggle-dot]]:rounded-full [&_[data-toggle-dot]]:bg-primary [&_[data-toggle-dot]]:transition-transform [&_[data-toggle-dot]]:duration-200 [&_[data-toggle-dot]]:ease-out [&[aria-pressed='true']_[data-toggle-track]]:border-primary [&[aria-pressed='true']_[data-toggle-track]]:bg-primary [&[aria-pressed='true']_[data-toggle-dot]]:translate-x-4 [&[aria-pressed='true']_[data-toggle-dot]]:bg-secondary" title="Toggle advanced step descriptions for each move." aria-pressed="false" aria-label="advanced mode off">
-      <span aria-hidden="true">Advanced</span>
-      <span id="advanced-sr-text" class="absolute -left-[9999px] opacity-0 pointer-events-none select-none">advanced mode off</span>
-      <span data-toggle-track aria-hidden="true">
-        <span data-toggle-dot></span>
-      </span>
-    </button>
-    <div class="relative" data-size-control aria-hidden="true">
-      <button id="size-menu-button" type="button" class="font-primary inline-flex cursor-pointer items-center gap-2 rounded-md border-2 border-primary bg-bg px-3 py-1.5 text-sm text-text transition-colors duration-200 hover:bg-primary" title="Choose card size to fit more moves on screen or improve readability." aria-haspopup="true" aria-expanded="false" aria-controls="size-menu">
-        Size: <span id="size-current">Normal</span>
-        <i id="size-menu-chevron" class="fa-solid fa-chevron-right rotate-0 transition-transform duration-300 ease-out motion-reduce:transition-none" aria-hidden="true"></i>
-      </button>
-      <div id="size-menu" class="absolute right-0 z-20 mt-2 hidden min-w-36 rounded-md border-2 border-primary bg-bg p-1 shadow-lg" role="menu" aria-labelledby="size-menu-button">
-        <button type="button" class="block w-full rounded px-3 py-2 text-left text-sm text-text transition-colors duration-200 hover:bg-primary" data-size-option="small" role="menuitemradio" aria-checked="false">Small</button>
-        <button type="button" class="block w-full rounded px-3 py-2 text-left text-sm text-text transition-colors duration-200 hover:bg-primary" data-size-option="normal" role="menuitemradio" aria-checked="true">Normal</button>
-        <button type="button" class="block w-full rounded px-3 py-2 text-left text-sm text-text transition-colors duration-200 hover:bg-primary" data-size-option="large" role="menuitemradio" aria-checked="false">Large</button>
-      </div>
-    </div>
-    </div>
-  </div>
+<section class="mx-auto -mt-8 max-w-4xl space-y-7 font-primary text-text md:-mt-6">
+  {{- partial "components/move-controls-bar.html" (dict "title" "108 Moves") -}}
 
   <div id="move-flow" class="group/move-flow pt-2" data-size="normal" data-advanced="false">
     {{- range $index, $move := $moves -}}
@@ -48,7 +25,6 @@
       const setAdvanced = (on) => {
         flow.dataset.advanced = on ? "true" : "false";
         advancedButton.setAttribute("aria-pressed", on ? "true" : "false");
-        advancedButton.setAttribute("aria-label", on ? "advanced mode on" : "advanced mode off");
         if (advancedSrText) {
           advancedSrText.textContent = on ? "advanced mode on" : "advanced mode off";
         }
@@ -65,6 +41,31 @@
     const sizeMenu = document.getElementById("size-menu");
     const sizeCurrent = document.getElementById("size-current");
     const sizeMenuChevron = document.getElementById("size-menu-chevron");
+    const controlsBar = document.getElementById("move-controls-bar");
+    const siteHeader = document.getElementById("site-header");
+
+    if (controlsBar && siteHeader) {
+      const updateControlsStuckState = () => {
+        const headerHeight = siteHeader.getBoundingClientRect().height;
+        const isStuck = controlsBar.getBoundingClientRect().top <= headerHeight + 0.5;
+        controlsBar.dataset.stuck = isStuck ? "true" : "false";
+      };
+
+      const syncControlsTop = () => {
+        controlsBar.style.top = siteHeader.getBoundingClientRect().height + "px";
+        updateControlsStuckState();
+      };
+
+      syncControlsTop();
+      window.addEventListener("resize", syncControlsTop);
+      window.addEventListener("scroll", updateControlsStuckState, { passive: true });
+
+      if (typeof ResizeObserver !== "undefined") {
+        const headerObserver = new ResizeObserver(syncControlsTop);
+        headerObserver.observe(siteHeader);
+      }
+    }
+
     if (!flow || !sizeMenuButton || !sizeMenu || !sizeCurrent || !sizeMenuChevron) return;
 
     const key = "moveFlowSize";
