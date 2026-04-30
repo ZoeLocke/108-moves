@@ -1,16 +1,16 @@
-<header class="sticky top-0 z-50 border-b border-primary/30 bg-bg/95 shadow-sm backdrop-blur supports-backdrop-filter:bg-bg/80">
+<header id="site-header" class="sticky top-0 z-50 border-b border-primary/30 bg-bg/95 shadow-sm backdrop-blur supports-backdrop-filter:bg-bg/80">
   <div class="mx-auto flex w-full max-w-5xl items-center justify-between px-4 py-3 sm:px-6 md:py-4 lg:px-8">
     <a href="{{ "" | absLangURL }}" class="font-secondary text-xl font-bold tracking-wide text-primary no-underline transition-colors duration-200 hover:text-secondary">
       {{ .Site.Title }}
     </a>
 
-    <nav aria-label="Main navigation" class="flex items-center gap-2 text-sm font-primary md:gap-3">
+    <nav aria-label="Main navigation" class="flex flex-wrap items-center justify-end gap-1.5 text-sm font-primary md:gap-3">
       {{ range .Site.Menus.main }}
-      <a href="{{ .URL | relLangURL }}" class="inline-flex items-center rounded-full px-3 py-1.5 text-base font-medium text-text/80 no-underline transition-colors duration-200 hover:bg-primary/20 hover:text-primary" title="{{ .Name }}">
+      <a href="{{ .URL | relLangURL }}" class="inline-flex items-center rounded-full px-2.5 py-1.5 text-sm font-medium text-text/80 no-underline transition-colors duration-200 hover:bg-primary/20 hover:text-primary sm:px-3 sm:text-base" title="{{ .Name }}">
         {{ .Name }}
       </a>
       {{ end }}
-      <button id="logout-button" type="button" class="group ml-2 inline-flex cursor-pointer items-center gap-1.5 rounded-full border border-primary/40 bg-white px-3 py-1.5 text-base font-medium text-text/80 shadow-sm transition-colors duration-200 hover:border-primary hover:bg-primary/15 hover:text-primary md:ml-3" title="Sign out">
+      <button id="logout-button" type="button" class="group ml-1 inline-flex cursor-pointer items-center gap-1.5 rounded-full border border-primary/40 bg-white px-2.5 py-1.5 text-sm font-medium text-text/80 shadow-sm transition-colors duration-200 hover:border-primary hover:bg-primary/15 hover:text-primary sm:ml-2 sm:px-3 sm:text-base md:ml-3" title="Sign out">
         {{- partial "components/icon.html" (dict "type" "log-out" "color" "current") -}}
         <span>Sign out</span>
       </button>
