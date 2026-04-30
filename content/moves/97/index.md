@@ -1,11 +1,10 @@
 ---
-title: Deflect, Parry, Punch
-draft: false
+title: Brush Knee and Punch
 weight: 97
 direction:
-learned: true
+learned: false
 steps: []
-transition_note:
+transition_note: Step up to left foot
 build:
     render: never
 ---

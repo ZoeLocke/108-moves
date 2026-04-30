@@ -1,7 +1,6 @@
 ---
 title: Single Whip
 steps: []
-draft: false
 weight: 4
 direction:
 learned: true

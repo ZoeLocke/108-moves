@@ -1,11 +1,10 @@
 ---
-title: Shoot Tiger with Bow
-draft: false
+title: Turn and Kick
 weight: 96
 direction:
-learned: false
+learned: true
 steps: []
-transition_note: Step up to left foot (?)
+transition_note:
 build:
     render: never
 ---

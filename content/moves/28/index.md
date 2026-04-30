@@ -1,11 +1,10 @@
 ---
-title: Deflect, Parry, Punch
+title: Fan Penetrates Through the Back (Iron Fan)
 steps: []
-draft: false
 weight: 28
 direction:
 learned: true
-transition_note: Step up to left foot
+transition_note:
 build:
     render: never
 ---

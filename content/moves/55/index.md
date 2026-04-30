@@ -1,7 +1,6 @@
 ---
-title: Part Wild Horse's Mane (left)
+title: Cross Hands
 steps: []
-draft: false
 weight: 55
 direction:
 learned: true

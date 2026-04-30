@@ -1,6 +1,5 @@
 ---
-title: Single Whip
-draft: false
+title: Fan Penetrates Through the Back (Iron Fan)
 weight: 85
 direction:
 learned: true

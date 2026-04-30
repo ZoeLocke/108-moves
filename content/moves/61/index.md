@@ -1,10 +1,9 @@
 ---
-title: Single Whip
-steps: []
-draft: false
+title: Part Wild Horse's Mane (left)
 weight: 61
 direction:
-learned: true
+learned:
+steps: []
 transition_note:
 build:
     render: never

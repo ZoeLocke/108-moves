@@ -1,9 +1,8 @@
 ---
-title: Seven Stars
-draft: false
+title: Single Whip
 weight: 93
 direction:
-learned: false
+learned: true
 steps: []
 transition_note:
 build:

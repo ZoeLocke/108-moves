@@ -1,6 +1,5 @@
 ---
-title: Cross Hands
-draft: false
+title: Single Whip
 weight: 99
 direction:
 learned: true

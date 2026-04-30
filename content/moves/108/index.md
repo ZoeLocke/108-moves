@@ -1,6 +1,5 @@
 ---
-title: 108
-draft: true
+title: Closing of Tai Chi
 weight: 108
 direction:
 learned: false

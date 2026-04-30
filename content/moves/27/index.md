@@ -1,7 +1,6 @@
 ---
-title: Turn and Chop With Fist
+title: Push Needle to Sea Bottom
 steps: []
-draft: false
 weight: 27
 direction:
 learned: true

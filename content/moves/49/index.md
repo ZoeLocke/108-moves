@@ -1,7 +1,6 @@
 ---
-title: Deflect, Parry, Punch
+title: Right Foot Kick
 steps: []
-draft: false
 weight: 49
 direction:
 learned: true

@@ -1,6 +1,5 @@
 ---
-title: Turn Around to Sweep Lotus
-draft: false
+title: Cross Hands to Penetrate
 weight: 95
 direction:
 learned: false

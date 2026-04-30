@@ -1,11 +1,11 @@
 ---
-title: Go Back to Ward Off Monkey (right)
-draft: false
+title: Wave Hands Like Clouds (x7)
+steps: []
 weight: 71
 direction:
-learned: false
-steps: []
+learned: true
 transition_note:
 build:
     render: never
 ---
+

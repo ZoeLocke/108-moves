@@ -1,7 +1,6 @@
 ---
-title: Fair Lady Works Shuttle (left)
+title: Part Wild Horse's Mane (right)
 steps: []
-draft: false
 weight: 62
 direction:
 learned: true

@@ -1,10 +1,9 @@
 ---
-title: Go Back to Ward Off Monkey (right)
-draft: false
+title: Single Whip
+steps: []
 weight: 73
 direction:
-learned: false
-steps: []
+learned: true
 transition_note:
 build:
     render: never

@@ -1,7 +1,6 @@
 ---
-title: Part Wild Horse's Mane (right)
+title: Carry Tiger to Mountain
 steps: []
-draft: false
 weight: 56
 direction:
 learned: true

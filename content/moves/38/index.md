@@ -1,7 +1,6 @@
 ---
-title: Brush Knee (right) and Twist Step
+title: Separation of Right Foot (Kick Right)
 steps: []
-draft: false
 weight: 38
 direction:
 learned: true

@@ -1,7 +1,6 @@
 ---
 title: Brush Knee (left)
 steps: []
-draft: false
 weight: 7
 direction:
 learned: true

@@ -1,9 +1,8 @@
 ---
-title: Fan Penetrates Through the Back (Iron Fan)
-draft: false
+title: Go Back to Ward Off Monkey (right)
 weight: 79
 direction:
-learned: true
+learned: false
 steps: []
 transition_note:
 build:

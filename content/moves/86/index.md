@@ -1,11 +1,10 @@
 ---
-title: High Pat on Horse
-draft: false
+title: White Snake Turns and Puts Out Tongue
 weight: 86
 direction:
-learned: true
+learned: false
 steps: []
-transition_note:
+transition_note:  Step up to left foot (?)
 build:
     render: never
 ---

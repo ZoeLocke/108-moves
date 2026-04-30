@@ -1,7 +1,6 @@
 ---
-title: Strike Ears with Fist
+title: Right Foot Kick
 steps: []
-draft: false
 weight: 46
 direction:
 learned: true

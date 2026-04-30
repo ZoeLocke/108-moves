@@ -35,6 +35,7 @@
     ],
     "classes": [
       "-left-[9999px]",
+      "-mt-10",
       "[&>li+li]:mt-2.5",
       "[&[aria-pressed='true']_[data-toggle-dot]]:bg-secondary",
       "[&[aria-pressed='true']_[data-toggle-dot]]:translate-x-4",
@@ -265,7 +266,7 @@
       "text-text/70",
       "text-xl",
       "top-0",
-      "top-16",
+      "top-[60px]",
       "tracking-[0.02em]",
       "tracking-[0.18em]",
       "tracking-tight",

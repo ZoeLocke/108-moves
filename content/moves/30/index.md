@@ -1,11 +1,10 @@
 ---
-title: Single Whip
+title: Deflect, Parry, Punch
 steps: []
-draft: false
 weight: 30
 direction:
 learned: true
-transition_note:
+transition_note: Step up to left foot
 build:
     render: never
 ---

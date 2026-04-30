@@ -1,7 +1,6 @@
 ---
-title: Grasp Bird's Tail
-steps: [Step up to hold ball, step to the right, 3 finger push, palms push, open-handed push]
-draft: false
+title: Part Wild Horse's Mane (right)
+steps: []
 weight: 60
 direction:
 learned: true

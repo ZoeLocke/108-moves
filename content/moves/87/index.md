@@ -1,11 +1,10 @@
 ---
-title: Cross Hands to Penetrate
-draft: false
+title: Deflect, Parry, Punch
 weight: 87
 direction:
-learned: false
+learned: true
 steps: []
-transition_note:
+transition_note:  Step up to left foot
 build:
     render: never
 ---

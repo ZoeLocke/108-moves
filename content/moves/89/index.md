@@ -1,11 +1,10 @@
 ---
-title: Brush Knee and Punch
-draft: false
+title: Single Whip
 weight: 89
 direction:
-learned: false
+learned: true
 steps: []
-transition_note: Step up to left foot
+transition_note:
 build:
     render: never
 ---

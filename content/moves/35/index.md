@@ -1,7 +1,6 @@
 ---
-title: Separation of Left Foot (Kick Left)
+title: Exit Wave Hands Like Clouds
 steps: []
-draft: false
 weight: 35
 direction:
 learned: true

@@ -1,11 +1,10 @@
 ---
-title: White Stork Spreads Wings
+title: Flying at a Slant
 steps: []
-draft: false
 weight: 23
 direction:
 learned: true
-transition_note:
+transition_note: Step up to left foot
 build:
     render: never
 ---

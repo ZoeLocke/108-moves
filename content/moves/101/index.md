@@ -1,6 +1,5 @@
 ---
-title: 101
-draft: true
+title: Seven Stars
 weight: 101
 direction:
 learned: false

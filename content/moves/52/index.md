@@ -1,11 +1,10 @@
 ---
-title: Carry Tiger to Mountain
+title: Turn and Kick
 steps: []
-draft: false
 weight: 52
 direction:
 learned: true
-transition_note:
+transition_note: Step up to left foot
 build:
     render: never
 ---

@@ -1,7 +1,6 @@
 ---
-title: Brush Knee (left)
+title: Raise Hands
 steps: []
-draft: false
 weight: 24
 direction:
 learned: true

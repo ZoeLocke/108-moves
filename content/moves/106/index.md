@@ -1,9 +1,8 @@
 ---
-title: 106
-draft: true
+title: Appear to Close Entrance
 weight: 106
 direction:
-learned: false
+learned: true
 steps: []
 transition_note:
 build:

@@ -1,10 +1,9 @@
 ---
-title: Turn and Kick
-draft: false
+title: Grasp Bird's Tail
 weight: 88
 direction:
 learned: true
-steps: []
+steps: [Step up to hold ball, step to the right, 3 finger push, palms push, open-handed push]
 transition_note:
 build:
     render: never

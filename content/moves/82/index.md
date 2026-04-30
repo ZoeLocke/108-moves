@@ -1,10 +1,9 @@
 ---
-title: Grasp Bird's Tail
-draft: false
+title: White Stork Spreads Wings
 weight: 82
 direction:
 learned: true
-steps: [Step up to hold ball, step to the right, 3 finger push, palms push, open-handed push]
+steps: []
 transition_note:
 build:
     render: never
