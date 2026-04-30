@@ -1,10 +1,7 @@
 ---
-title: Go Back to Ward of Monkey
-steps: []
-draft: false
+title: Go Back to Ward of Monkey (x3)
 weight: 20
-direction:
-learned: true
+steps: []
 transition_note:
 build:
     render: never

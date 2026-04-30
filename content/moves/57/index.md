@@ -1,10 +1,9 @@
 ---
-title: 57
-steps: []
-draft: true
+title: Part Wild Horse's Mane (left)
 weight: 57
 direction:
-learned: true
+learned:
+steps: []
 transition_note:
 build:
     render: never
