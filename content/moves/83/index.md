@@ -1,6 +1,5 @@
 ---
-title: Single Whip
-draft: false
+title: Brush Knee (left)
 weight: 83
 direction:
 learned: true

@@ -1,7 +1,6 @@
 ---
-title: Wave Hands Like Clouds (x7)
+title: Fair Lady Works Shuttle (left)
 steps: []
-draft: false
 weight: 66
 direction:
 learned: true

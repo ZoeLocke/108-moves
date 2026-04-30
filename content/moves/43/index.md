@@ -1,7 +1,6 @@
 ---
-title: Hit Tiger at Left
+title: Punch Low
 steps: []
-draft: false
 weight: 43
 direction:
 learned: true

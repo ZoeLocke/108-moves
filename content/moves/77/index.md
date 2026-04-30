@@ -1,9 +1,8 @@
 ---
-title: Brush Knee (left)
-draft: false
+title: Go Back to Ward Off Monkey (right)
 weight: 77
 direction:
-learned: true
+learned: false
 steps: []
 transition_note:
 build:

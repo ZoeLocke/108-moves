@@ -1,9 +1,8 @@
 ---
-title: Retreat to Ride Tiger
-draft: false
+title: High Pat on Horse
 weight: 94
 direction:
-learned: false
+learned: true
 steps: []
 transition_note:
 build:

@@ -1,7 +1,6 @@
 ---
-title: Separation of Right Foot (Kick Right)
+title: Wave Hands Like Clouds (x5)
 steps: []
-draft: false
 weight: 34
 direction:
 learned: true

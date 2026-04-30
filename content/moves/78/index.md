@@ -1,9 +1,8 @@
 ---
-title: Push Needle to Sea Bottom
-draft: false
+title: Go Back to Ward Off Monkey (left)
 weight: 78
 direction:
-learned: true
+learned: false
 steps: []
 transition_note:
 build:

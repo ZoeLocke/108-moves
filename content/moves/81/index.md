@@ -1,11 +1,10 @@
 ---
-title: Deflect, Parry, Punch
-draft: false
+title: Raise Hands
 weight: 81
 direction:
 learned: true
 steps: []
-transition_note:  Step up to left foot
+transition_note:
 build:
     render: never
 ---

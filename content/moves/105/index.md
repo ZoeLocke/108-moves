@@ -1,9 +1,8 @@
 ---
-title: 105
-draft: true
+title: Deflect, Parry, Punch
 weight: 105
 direction:
-learned: false
+learned: true
 steps: []
 transition_note:
 build:

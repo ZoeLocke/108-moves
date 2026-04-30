@@ -1,11 +1,10 @@
 ---
-title: Left Grasp Bird's Tail
-steps: [Step up to hold the ball, step to the left, brush the bird]
-draft: false
+title: Part Wild Horse's Mane (left)
+steps: []
 weight: 59
 direction:
 learned: true
-transition_note: Step up to left foot
+transition_note:
 build:
     render: never
 ---

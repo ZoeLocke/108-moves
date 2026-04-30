@@ -1,8 +1,7 @@
 ---
-title: Raise Hands
-steps: []
-draft: false
+title: Go Back to Ward of Monkey (right)
 weight: 22
+steps: []
 direction:
 learned: true
 transition_note:

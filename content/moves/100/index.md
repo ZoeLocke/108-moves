@@ -1,11 +1,10 @@
 ---
-title: Closing of Tai Chi
-draft: false
+title: Creeping Low Like a Snake
 weight: 100
 direction:
 learned: false
 steps: []
-transition_note:
+transition_note: Step up to left foot (?)
 build:
     render: never
 ---

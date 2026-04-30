@@ -1,9 +1,8 @@
 ---
-title: White Stork Spreads Wings
-draft: false
+title: Golden Cock Stands on One Leg (left)
 weight: 76
 direction:
-learned: true
+learned: false
 steps: []
 transition_note:
 build:

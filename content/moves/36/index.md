@@ -1,7 +1,6 @@
 ---
-title: Turn and Kick
+title: Single Whip
 steps: []
-draft: false
 weight: 36
 direction:
 learned: true

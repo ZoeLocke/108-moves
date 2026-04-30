@@ -1,10 +1,9 @@
 ---
-title: Golden Cock Stands on One Leg (right)
-draft: false
+title: Single Whip
+steps: []
 weight: 69
 direction:
-learned: false
-steps: []
+learned: true
 transition_note:
 build:
     render: never

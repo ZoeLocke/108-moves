@@ -1,11 +1,10 @@
 ---
-title: Flying at a Slant
-draft: false
+title: Creeping Low Like a Snake
 weight: 74
 direction:
-learned: true
+learned: false
 steps: []
-transition_note: Step up to left foot
+transition_note:
 build:
     render: never
 ---

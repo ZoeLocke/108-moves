@@ -1,7 +1,6 @@
 ---
-title: Punch Low
+title: Separation of Left Foot (Kick Left)
 steps: []
-draft: false
 weight: 39
 direction:
 learned: true

@@ -1,7 +1,6 @@
 ---
-title: Push Needle to Sea Bottom
+title: White Stork Spreads Wings
 steps: []
-draft: false
 weight: 25
 direction:
 learned: true

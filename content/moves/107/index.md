@@ -1,9 +1,8 @@
 ---
-title: 107
-draft: true
+title: Cross Hands
 weight: 107
 direction:
-learned: false
+learned: true
 steps: []
 transition_note:
 build:

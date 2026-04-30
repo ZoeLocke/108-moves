@@ -1,7 +1,6 @@
 ---
-title: Cross Hands
+title: Left Foot Kick
 steps: []
-draft: false
 weight: 51
 direction:
 learned: true

@@ -1,7 +1,6 @@
 ---
-title: Right Foot Kick
+title: Brush Knee (right) and Twist Step
 steps: []
-draft: false
 weight: 42
 direction:
 learned: true

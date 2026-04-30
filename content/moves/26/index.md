@@ -1,7 +1,6 @@
 ---
-title: Fan Penetrates Through the Back (Iron Fan)
+title: Brush Knee (left)
 steps: []
-draft: false
 weight: 26
 direction:
 learned: true

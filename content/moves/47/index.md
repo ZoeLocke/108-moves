@@ -1,7 +1,6 @@
 ---
-title: Left Foot Kick
+title: Hit Tiger at Left
 steps: []
-draft: false
 weight: 47
 direction:
 learned: true

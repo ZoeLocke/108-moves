@@ -1,7 +1,6 @@
 ---
-title: Appear to Close Entrance
+title: Strike Ears with Fist
 steps: []
-draft: false
 weight: 50
 direction:
 learned: true

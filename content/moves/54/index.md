@@ -1,7 +1,6 @@
 ---
-title: Part Wild Horse's Mane (right)
+title: Appear to Close Entrance
 steps: []
-draft: false
 weight: 54
 direction:
 learned: true

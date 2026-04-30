@@ -1,7 +1,6 @@
 ---
-title: Deflect, Parry, Punch
+title: Brush Knee (left) and Twist Step
 steps: []
-draft: false
 weight: 41
 direction:
 learned: true

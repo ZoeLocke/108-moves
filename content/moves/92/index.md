@@ -1,11 +1,11 @@
 ---
-title: Creeping Low Like a Snake
-draft: false
+title: Exit Wave Hands Like Clouds
 weight: 92
 direction:
 learned: false
 steps: []
-transition_note: Step up to left foot (?)
+transition_note:
 build:
     render: never
 ---
+

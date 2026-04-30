@@ -1,7 +1,6 @@
 ---
-title: High Pat on Horse
+title: Begin Wave Hands Like Clouds
 steps: []
-draft: false
 weight: 33
 direction:
 learned: true

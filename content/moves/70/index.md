@@ -1,11 +1,11 @@
 ---
-title: Golden Cock Stands on One Leg (left)
-draft: false
+title: Into Wave Hands Like Clouds
+steps: []
 weight: 70
 direction:
-learned: false
-steps: []
+learned: true
 transition_note:
 build:
     render: never
 ---
+

@@ -1,7 +1,6 @@
 ---
-title: Brush Knee (left) and Twist Step
+title: High Pat on Horse
 steps: []
-draft: false
 weight: 37
 direction:
 learned: true

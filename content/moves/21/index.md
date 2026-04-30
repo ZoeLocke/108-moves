@@ -1,11 +1,10 @@
 ---
-title: Flying at a Slant
-steps: []
-draft: false
+title: Go Back to Ward of Monkey (left)
 weight: 21
+steps: []
 direction:
 learned: true
-transition_note: Step up to left foot
+transition_note:
 build:
     render: never
 ---

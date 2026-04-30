@@ -1,9 +1,8 @@
 ---
-title: Raise Hands
-draft: false
+title: Golden Cock Stands on One Leg (right)
 weight: 75
 direction:
-learned: true
+learned: false
 steps: []
 transition_note:
 build:

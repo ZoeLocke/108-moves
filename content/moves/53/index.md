@@ -1,7 +1,6 @@
 ---
-title: Horizontal Single Whip
+title: Deflect, Parry, Punch
 steps: []
-draft: false
 weight: 53
 direction:
 learned: true
