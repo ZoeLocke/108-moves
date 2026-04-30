@@ -7,6 +7,8 @@
 
 	--color-primary: oklch(72.562% 0.03913 132.776);
 	--color-secondary: oklch(67.170% 0.07077 14.800);
+	--color-learned: oklch(91% 0.045 145);
+	--color-not-learned: oklch(92% 0.045 20);
 	--color-text: oklch(0% 0 0);
 	--color-bg: oklch(96.115% 0 89.876);
 
