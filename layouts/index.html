@@ -2,30 +2,7 @@
 {{- $moves := where .Site.RegularPages "Section" "moves" -}}
 {{- $moves = sort $moves "Params.weight" "asc" -}}
 <section class="mx-auto -mt-8 max-w-4xl space-y-7 font-primary text-text md:-mt-6">
-  <div id="move-controls-bar" data-stuck="false" class="sticky top-0 z-40 flex w-full items-start justify-between gap-3 bg-transparent py-3 transition-colors duration-300 backdrop-blur supports-backdrop-filter:bg-transparent after:pointer-events-none after:absolute after:inset-x-0 after:bottom-0 after:h-1 after:bg-linear-to-b after:from-off-black/10 after:to-transparent after:opacity-0 after:transition-opacity after:duration-300 data-[stuck=true]:bg-bg/95 data-[stuck=true]:supports-backdrop-filter:bg-bg/80 data-[stuck=true]:after:opacity-100">
-    <h1 class="font-secondary text-3xl font-bold tracking-wider text-primary sm:text-4xl md:text-5xl">108 Moves</h1>
-
-    <div class="flex shrink-0 flex-col items-end gap-2 sm:flex-row sm:items-center">
-    <button id="advanced-button" type="button" class="relative inline-flex w-28 cursor-pointer items-center justify-between gap-1.5 rounded-full border border-primary/40 bg-white px-2.5 py-2 font-primary text-xs font-medium text-text shadow-sm transition-colors duration-200 hover:border-primary hover:bg-primary/10 sm:w-32 sm:gap-2 sm:px-3 sm:text-sm [&[aria-pressed='true']_[data-toggle-track]]:bg-primary/25 [&[aria-pressed='true']_[data-toggle-dot]]:translate-x-4 sm:[&[aria-pressed='true']_[data-toggle-dot]]:translate-x-5 [&[aria-pressed='true']_[data-toggle-dot]]:bg-secondary" title="Toggle advanced step descriptions for each move." aria-pressed="false" aria-labelledby="advanced-label advanced-sr-text">
-      <span id="advanced-label" aria-hidden="true">Advanced</span>
-      <span id="advanced-sr-text" class="sr-only">advanced mode off</span>
-      <span data-toggle-track aria-hidden="true" class="relative inline-flex h-5 w-10 items-center rounded-full border border-primary/40 bg-body transition-colors duration-200 sm:h-6 sm:w-11">
-        <span data-toggle-dot class="absolute left-0.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 rounded-full bg-primary transition-transform duration-200 ease-out sm:h-4 sm:w-4"></span>
-      </span>
-    </button>
-    <div class="relative" data-size-control aria-hidden="true">
-      <button id="size-menu-button" type="button" class="inline-flex w-28 cursor-pointer items-center justify-between gap-1.5 rounded-full border border-primary/40 bg-white px-2.5 py-2 font-primary text-xs font-medium text-text shadow-sm transition-colors duration-200 hover:border-primary hover:bg-primary/10 sm:w-32 sm:gap-2 sm:px-3 sm:text-sm" title="Choose card size to fit more moves on screen or improve readability." aria-haspopup="true" aria-expanded="false" aria-controls="size-menu">
-        Size: <span id="size-current">Normal</span>
-        <i id="size-menu-chevron" class="fa-solid fa-chevron-right rotate-0 transition-transform duration-300 ease-out motion-reduce:transition-none" aria-hidden="true"></i>
-      </button>
-      <div id="size-menu" class="absolute right-0 z-20 mt-2 hidden min-w-36 rounded-2xl border border-primary/35 bg-white p-1.5 shadow-xl" role="menu" aria-labelledby="size-menu-button">
-        <button type="button" class="block w-full rounded-xl px-3 py-2 text-left text-sm text-text transition-colors duration-200 hover:bg-primary/15" data-size-option="small" role="menuitemradio" aria-checked="false">Small</button>
-        <button type="button" class="block w-full rounded-xl px-3 py-2 text-left text-sm text-text transition-colors duration-200 hover:bg-primary/15" data-size-option="normal" role="menuitemradio" aria-checked="true">Normal</button>
-        <button type="button" class="block w-full rounded-xl px-3 py-2 text-left text-sm text-text transition-colors duration-200 hover:bg-primary/15" data-size-option="large" role="menuitemradio" aria-checked="false">Large</button>
-      </div>
-    </div>
-    </div>
-  </div>
+  {{- partial "components/move-controls-bar.html" (dict "title" "108 Moves") -}}
 
   <div id="move-flow" class="group/move-flow pt-2" data-size="normal" data-advanced="false">
     {{- range $index, $move := $moves -}}
