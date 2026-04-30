@@ -6,13 +6,14 @@
     <h1 class="font-secondary text-4xl font-bold tracking-[0.18em] text-text md:text-5xl pl-6 md:pl-0">108 Moves</h1>
 
     <div class="flex flex-wrap items-center md:justify-end justify-center gap-2">
-    <button id="advanced-button" type="button" class="font-primary inline-flex cursor-pointer items-center gap-2 rounded-md bg-bg px-3 py-1.5 text-base text-text [&_[data-toggle-track]]:relative [&_[data-toggle-track]]:inline-flex [&_[data-toggle-track]]:h-6 [&_[data-toggle-track]]:w-10 [&_[data-toggle-track]]:items-center [&_[data-toggle-track]]:rounded-full [&_[data-toggle-track]]:border-2 [&_[data-toggle-track]]:border-[oklch(from_var(--color-primary)_l_c_h_/_0.7)] [&_[data-toggle-track]]:bg-bg [&_[data-toggle-track]]:transition-colors [&_[data-toggle-track]]:duration-200 [&_[data-toggle-dot]]:absolute [&_[data-toggle-dot]]:left-0.5 [&_[data-toggle-dot]]:top-1/2 [&_[data-toggle-dot]]:h-3.5 [&_[data-toggle-dot]]:w-3.5 [&_[data-toggle-dot]]:-translate-y-1/2 [&_[data-toggle-dot]]:rounded-full [&_[data-toggle-dot]]:bg-primary [&_[data-toggle-dot]]:transition-transform [&_[data-toggle-dot]]:duration-200 [&_[data-toggle-dot]]:ease-out [&[aria-pressed='true']_[data-toggle-track]]:border-primary [&[aria-pressed='true']_[data-toggle-track]]:bg-primary [&[aria-pressed='true']_[data-toggle-dot]]:translate-x-4 [&[aria-pressed='true']_[data-toggle-dot]]:bg-secondary" title="Toggle advanced step descriptions for each move." aria-pressed="false">
-      <span>Advanced</span>
+    <button id="advanced-button" type="button" class="relative font-primary inline-flex cursor-pointer items-center gap-2 rounded-md bg-bg px-3 py-1.5 text-base text-text [&_[data-toggle-track]]:relative [&_[data-toggle-track]]:inline-flex [&_[data-toggle-track]]:h-6 [&_[data-toggle-track]]:w-10 [&_[data-toggle-track]]:items-center [&_[data-toggle-track]]:rounded-full [&_[data-toggle-track]]:border-2 [&_[data-toggle-track]]:border-[oklch(from_var(--color-primary)_l_c_h_/_0.7)] [&_[data-toggle-track]]:bg-bg [&_[data-toggle-track]]:transition-colors [&_[data-toggle-track]]:duration-200 [&_[data-toggle-dot]]:absolute [&_[data-toggle-dot]]:left-0.5 [&_[data-toggle-dot]]:top-1/2 [&_[data-toggle-dot]]:h-3.5 [&_[data-toggle-dot]]:w-3.5 [&_[data-toggle-dot]]:-translate-y-1/2 [&_[data-toggle-dot]]:rounded-full [&_[data-toggle-dot]]:bg-primary [&_[data-toggle-dot]]:transition-transform [&_[data-toggle-dot]]:duration-200 [&_[data-toggle-dot]]:ease-out [&[aria-pressed='true']_[data-toggle-track]]:border-primary [&[aria-pressed='true']_[data-toggle-track]]:bg-primary [&[aria-pressed='true']_[data-toggle-dot]]:translate-x-4 [&[aria-pressed='true']_[data-toggle-dot]]:bg-secondary" title="Toggle advanced step descriptions for each move." aria-pressed="false" aria-label="advanced mode off">
+      <span aria-hidden="true">Advanced</span>
+      <span id="advanced-sr-text" class="absolute -left-[9999px] opacity-0 pointer-events-none select-none">advanced mode off</span>
       <span data-toggle-track aria-hidden="true">
         <span data-toggle-dot></span>
       </span>
     </button>
-    <div class="relative" data-size-control>
+    <div class="relative" data-size-control aria-hidden="true">
       <button id="size-menu-button" type="button" class="font-primary inline-flex cursor-pointer items-center gap-2 rounded-md border-2 border-primary bg-bg px-3 py-1.5 text-sm text-text transition-colors duration-200 hover:bg-primary" title="Choose card size to fit more moves on screen or improve readability." aria-haspopup="true" aria-expanded="false" aria-controls="size-menu">
         Size: <span id="size-current">Normal</span>
         <i id="size-menu-chevron" class="fa-solid fa-chevron-right rotate-0 transition-transform duration-300 ease-out motion-reduce:transition-none" aria-hidden="true"></i>
@@ -40,12 +41,17 @@
   (() => {
     const flow = document.getElementById("move-flow");
     const advancedButton = document.getElementById("advanced-button");
+    const advancedSrText = document.getElementById("advanced-sr-text");
 
     if (advancedButton && flow) {
       const advancedKey = "moveFlowAdvanced";
       const setAdvanced = (on) => {
         flow.dataset.advanced = on ? "true" : "false";
         advancedButton.setAttribute("aria-pressed", on ? "true" : "false");
+        advancedButton.setAttribute("aria-label", on ? "advanced mode on" : "advanced mode off");
+        if (advancedSrText) {
+          advancedSrText.textContent = on ? "advanced mode on" : "advanced mode off";
+        }
         localStorage.setItem(advancedKey, on ? "true" : "false");
       };
       const storedAdvanced = localStorage.getItem(advancedKey);

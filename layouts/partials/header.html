@@ -10,8 +10,8 @@
         {{ .Name }}
       </a>
       {{ end }}
-      <button id="logout-button" type="button" class="inline-flex cursor-pointer items-center gap-1.5 text-text transition-colors duration-200 hover:text-body text-lg ml-6" title="Sign out">
-        <i class="fa-solid fa-right-from-bracket" aria-hidden="true"></i>
+      <button id="logout-button" type="button" class="group inline-flex cursor-pointer items-center gap-1.5 text-text transition-colors duration-200 hover:text-body text-lg ml-6" title="Sign out">
+        {{- partial "components/icon.html" (dict "type" "log-out" "color" "current") -}}
         <span>Sign out</span>
       </button>
     </nav>

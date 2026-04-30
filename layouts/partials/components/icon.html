@@ -1,0 +1,37 @@
+{{- $type := .type -}}
+{{- $color := .color | default "secondary" -}}
+{{- $hoverColor := .hoverColor | default "" -}}
+{{- $opacity := printf "%v" (.opacity | default "100") -}}
+{{- $textClass := printf "text-%s" $color -}}
+{{- $hoverTextClass := "" -}}
+{{- if ne $hoverColor "" -}}
+	{{- $hoverTextClass = printf "group-hover:text-%s" $hoverColor -}}
+{{- end -}}
+{{- $opacityClass := "opacity-100" -}}
+{{- if eq $opacity "25" -}}
+	{{- $opacityClass = "opacity-25" -}}
+{{- else if eq $opacity "50" -}}
+	{{- $opacityClass = "opacity-50" -}}
+{{- else if eq $opacity "75" -}}
+	{{- $opacityClass = "opacity-75" -}}
+{{- end -}}
+
+{{- if eq $type "transition" -}}
+<span class="inline-flex shrink-0 items-center justify-center leading-none {{ $textClass }} {{ $hoverTextClass }}">
+	<i class="inline-flex h-[1.5rem] w-[1.5rem] content-center text-center leading-none fa-solid fa-code-commit {{ $textClass }} {{ $hoverTextClass }} {{ $opacityClass }}" aria-hidden="true"></i>
+</span>
+{{- else if eq $type "learned" -}}
+<span class="inline-flex shrink-0 items-center justify-center leading-none {{ $textClass }} {{ $hoverTextClass }}">
+	<i class="fa-solid fa-lightbulb {{ $textClass }} {{ $hoverTextClass }} {{ $opacityClass }}" aria-hidden="true"></i>
+</span>
+{{- else if eq $type "unlearned" -}}
+<span class="inline-flex shrink-0 items-center justify-center leading-none {{ $textClass }} {{ $hoverTextClass }}">
+	<i class="fa-regular fa-lightbulb {{ $textClass }} {{ $hoverTextClass }} {{ $opacityClass }}" aria-hidden="true"></i>
+</span>
+{{- else if eq $type "log-out" -}}
+<span class="inline-flex shrink-0 items-center justify-center leading-none {{ $textClass }} {{ $hoverTextClass }}">
+	<i class="fa-solid fa-right-from-bracket {{ $textClass }} {{ $hoverTextClass }} {{ $opacityClass }}" aria-hidden="true"></i>
+</span>
+{{- else if eq $type "chevron-right" -}}
+<i class="fa-solid fa-chevron-right leading-none rotate-0 transition-transform duration-300 ease-out group-open:rotate-90 motion-reduce:transition-none {{ $textClass }} {{ $hoverTextClass }} {{ $opacityClass }}" aria-hidden="true"></i>
+{{- end -}}
