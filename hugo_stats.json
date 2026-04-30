@@ -34,6 +34,7 @@
       "ul"
     ],
     "classes": [
+      "-left-full",
       "-mt-8",
       "-translate-y-1/2",
       "[&>li+li]:mt-2",
@@ -245,6 +246,7 @@
       "mt-2",
       "mx-auto",
       "no-underline",
+      "opacity-0",
       "opacity-100",
       "opacity-25",
       "overflow-hidden",
@@ -253,6 +255,7 @@
       "p-6",
       "pb-4",
       "pb-5",
+      "pointer-events-none",
       "ps-5",
       "pt-2",
       "pt-4",
@@ -281,6 +284,7 @@
       "rounded-full",
       "rounded-t-3xl",
       "rounded-xl",
+      "select-none",
       "shadow-sm",
       "shadow-xl",
       "shrink-0",
