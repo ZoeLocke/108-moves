@@ -12,7 +12,7 @@
       {{ end }}
       <button id="logout-button" type="button" class="group ml-1 inline-flex cursor-pointer items-center gap-1.5 rounded-full border border-primary/40 bg-white px-2.5 py-1.5 text-sm font-medium text-text/80 shadow-sm transition-colors duration-200 hover:border-primary hover:bg-primary/15 hover:text-primary sm:ml-2 sm:px-3 sm:text-base md:ml-3" title="Sign out">
         {{- partial "components/icon.html" (dict "type" "log-out" "color" "current") -}}
-        <span>Sign out</span>
+        <span class="hidden sm:inline">Sign out</span>
       </button>
     </nav>
     <script>
