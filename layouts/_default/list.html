@@ -1,6 +1,6 @@
 {{ define "main" }}
-<section class="space-y-6 font-primary text-text">
-  <h1 class="font-secondary text-3xl font-bold tracking-tight text-text">{{ .Title }}</h1>
+<section class="space-y-7 font-primary text-text">
+  <h1 class="font-secondary text-3xl font-bold tracking-tight text-primary md:text-4xl">{{ .Title }}</h1>
   {{ with .Content }}
   <div class="space-y-4 text-text/80">
     {{ . }}
@@ -9,8 +9,8 @@
 
   <ul class="space-y-4">
     {{ range .Pages.ByDate.Reverse }}
-    <li class="rounded border border-text/20 p-4">
-      <a href="{{ .RelPermalink }}" class="font-secondary text-xl font-bold text-text">{{ .Title }}</a>
+    <li class="rounded-2xl border border-primary/20 bg-surface/85 p-5 shadow-sm transition-shadow duration-300 hover:shadow-lg">
+      <a href="{{ .RelPermalink }}" class="font-secondary text-xl font-bold text-primary no-underline transition-colors duration-200 hover:text-secondary">{{ .Title }}</a>
       {{ with .Description }}
       <p class="mt-2 text-text/70">{{ . }}</p>
       {{ end }}

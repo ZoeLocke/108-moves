@@ -2,19 +2,20 @@
 <html lang="{{ .Site.Language.LanguageCode | default "en" }}">
 <head>
     <script>(function(){if(typeof sessionStorage!=='undefined'&&!sessionStorage.getItem('tce_auth')){window.location.replace('{{ "login/" | absLangURL }}');}})();</script>
+    <script>(function(){try{var mode=localStorage.getItem('siteThemeMode');if(mode==='light'||mode==='dark'){document.documentElement.setAttribute('data-theme',mode);}else{document.documentElement.removeAttribute('data-theme');}}catch(e){}})();</script>
     {{ partial "head.html" . }}
     {{ with (templates.Defer (dict "key" "global")) }}
         {{ partial "css.html" . }}
     {{ end }}
 </head>
-<body class="bg-bg text-text font-primary">
-    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-bg focus:px-3 focus:py-2">
+<body class="min-h-screen bg-linear-to-b from-body via-bg to-bg font-primary text-text antialiased">
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-surface focus:px-3 focus:py-2 focus:shadow-lg">
         Skip to main content
     </a>
 
     {{ partial "header.html" . }}
 
-    <main id="main-content" class="mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8 py-10" tabindex="-1">
+    <main id="main-content" class="mx-auto w-full max-w-5xl px-4 py-10 sm:px-6 md:py-12 lg:px-8" tabindex="-1">
         {{ block "main" . }}{{ end }}
     </main>
 
