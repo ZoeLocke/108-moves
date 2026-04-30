@@ -2,9 +2,9 @@
 {{- $learnedValue := lower (printf "%v" $move.Params.learned) -}}
 {{- $isLearned := eq $learnedValue "true" -}}
 {{- $cardBgClass := cond $isLearned "bg-learned" "bg-not-learned" -}}
-<details class="group w-full md:w-11/12 mx-auto overflow-hidden rounded-3xl group-data-[size=small]/move-flow:rounded-2xl group-data-[size=large]/move-flow:rounded-4xl text-text shadow-md transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-lg motion-reduce:transition-none motion-reduce:hover:translate-y-0">
-  <summary class="{{ $cardBgClass }} flex cursor-pointer list-none items-center justify-between gap-3 group-data-[size=small]/move-flow:gap-2 group-data-[size=large]/move-flow:gap-4 rounded-t-3xl group-data-[size=small]/move-flow:rounded-t-2xl group-data-[size=large]/move-flow:rounded-t-4xl px-6 group-data-[size=small]/move-flow:px-4 group-data-[size=large]/move-flow:px-7 py-4 group-data-[size=small]/move-flow:py-3 group-data-[size=large]/move-flow:py-5 marker:content-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-text focus-visible:ring-offset-2">
-    <h2 class="text-lg md:text-xl font-secondary font-bold tracking-[0.02em] transition-colors duration-200 inline-flex items-center gap-2">
+<details class="group mx-auto w-full overflow-hidden rounded-3xl text-text ring-1 ring-primary/20 shadow-sm transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-xl motion-reduce:transition-none motion-reduce:hover:translate-y-0 md:w-11/12 group-data-[size=small]/move-flow:rounded-2xl group-data-[size=large]/move-flow:rounded-4xl">
+  <summary class="{{ $cardBgClass }} flex list-none cursor-pointer items-center justify-between gap-3 rounded-t-3xl px-6 py-4 marker:content-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 group-data-[size=small]/move-flow:gap-2 group-data-[size=small]/move-flow:rounded-t-2xl group-data-[size=small]/move-flow:px-4 group-data-[size=small]/move-flow:py-3 group-data-[size=large]/move-flow:gap-4 group-data-[size=large]/move-flow:rounded-t-4xl group-data-[size=large]/move-flow:px-7 group-data-[size=large]/move-flow:py-5">
+    <h2 class="inline-flex items-center gap-2 font-secondary text-lg font-bold tracking-tight transition-colors duration-200 md:text-xl">
       <span>{{ $move.Params.weight }}: {{ $move.Title }}</span>
       {{- if $isLearned -}}
       {{- partial "components/icon.html" (dict "type" "learned" "color" "text" "opacity" "25") -}}
@@ -12,23 +12,23 @@
       {{- partial "components/icon.html" (dict "type" "unlearned" "color" "text" "opacity" "25") -}}
       {{- end -}}
     </h2>
-    <span class="inline-flex h-8 w-8 shrink-0 items-center justify-center text-text group-data-[size=small]/move-flow:h-6 group-data-[size=small]/move-flow:w-6 group-data-[size=large]/move-flow:h-10 group-data-[size=large]/move-flow:w-10" aria-hidden="true">
+    <span class="inline-flex h-8 w-8 shrink-0 items-center justify-center text-text transition-transform duration-200 group-open:rotate-90 group-data-[size=small]/move-flow:h-6 group-data-[size=small]/move-flow:w-6 group-data-[size=large]/move-flow:h-10 group-data-[size=large]/move-flow:w-10" aria-hidden="true">
       {{- partial "components/icon.html" (dict "type" "chevron-right" "color" "text") -}}
     </span>
   </summary>
 
   {{- $hasContent := or $move.Params.steps $move.Content -}}
   {{ if $hasContent }}
-  <div class="bg-white px-6 group-data-[size=small]/move-flow:px-4 group-data-[size=large]/move-flow:px-7 pt-4 group-data-[size=small]/move-flow:pt-3 group-data-[size=large]/move-flow:pt-5 pb-5 group-data-[size=small]/move-flow:pb-4 group-data-[size=large]/move-flow:pb-7">
+  <div class="border-t border-primary/10 bg-white px-6 pb-5 pt-4 group-data-[size=small]/move-flow:px-4 group-data-[size=small]/move-flow:pb-4 group-data-[size=small]/move-flow:pt-3 group-data-[size=large]/move-flow:px-7 group-data-[size=large]/move-flow:pb-7 group-data-[size=large]/move-flow:pt-5">
     {{ with $move.Params.steps }}
-    <ol class="list-decimal ps-5 group-data-[size=small]/move-flow:ps-4 group-data-[size=large]/move-flow:ps-6 text-xl group-data-[size=small]/move-flow:text-lg group-data-[size=large]/move-flow:text-2xl leading-snug [&>li+li]:mt-2.5 group-data-[size=small]/move-flow:[&>li+li]:mt-2 group-data-[size=large]/move-flow:[&>li+li]:mt-3 group-data-[advanced=true]/move-flow:hidden">
+    <ol class="list-decimal ps-5 text-base leading-relaxed md:text-lg group-data-[advanced=true]/move-flow:hidden group-data-[size=small]/move-flow:ps-4 group-data-[size=small]/move-flow:text-sm group-data-[size=small]/move-flow:[&>li+li]:mt-1.5 group-data-[size=large]/move-flow:ps-6 group-data-[size=large]/move-flow:text-xl group-data-[size=large]/move-flow:[&>li+li]:mt-3 [&>li+li]:mt-2">
       {{- range . -}}
       <li>{{ . }}</li>
       {{- end -}}
     </ol>
     {{ end }}
     {{ with $move.Content }}
-    <div class="hidden text-xl group-data-[size=small]/move-flow:text-lg group-data-[size=large]/move-flow:text-2xl leading-snug group-data-[advanced=true]/move-flow:block [&_ol]:m-0 [&_ol]:list-decimal [&_ol]:ps-5 group-data-[size=small]/move-flow:[&_ol]:ps-4 group-data-[size=large]/move-flow:[&_ol]:ps-6 [&_ol]:leading-snug [&_li]:m-0 [&_li+li]:mt-2.5 group-data-[size=small]/move-flow:[&_li+li]:mt-2 group-data-[size=large]/move-flow:[&_li+li]:mt-3">
+    <div class="hidden text-base leading-relaxed md:text-lg group-data-[advanced=true]/move-flow:block group-data-[size=small]/move-flow:text-sm group-data-[size=small]/move-flow:[&_li+li]:mt-1.5 group-data-[size=small]/move-flow:[&_ol]:ps-4 group-data-[size=large]/move-flow:text-xl group-data-[size=large]/move-flow:[&_li+li]:mt-3 group-data-[size=large]/move-flow:[&_ol]:ps-6 [&_li+li]:mt-2 [&_li]:m-0 [&_ol]:m-0 [&_ol]:list-decimal [&_ol]:ps-5 [&_ol]:leading-relaxed">
       {{ . }}
     </div>
     {{ end }}
