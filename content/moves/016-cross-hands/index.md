@@ -1,10 +1,10 @@
 ---
 title: Cross Hands
-steps: []
+steps: [Rise up with hands over head, drop down and scroop with arms, back to center with arms crossed]
 weight: 16
-direction:
+direction: Door
 learned: true
-transition_note:
+transition_note: Left foot turns to right
 build:
     render: never
 ---
