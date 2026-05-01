@@ -3,7 +3,7 @@ title: White Stork Spreads Wings
 weight: 82
 direction:
 learned: true
-steps: []
+steps: [Step forward with right foot, right hand to knee and left hand pushes, step left foot up to right, rise up hands at odds to raise right hand, twist the lightbulb]
 transition_note:
 build:
     render: never
