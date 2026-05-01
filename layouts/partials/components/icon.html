@@ -2,7 +2,14 @@
 {{- $color := .color | default "secondary" -}}
 {{- $hoverColor := .hoverColor | default "" -}}
 {{- $opacity := printf "%v" (.opacity | default "100") -}}
+{{- $size := .size | default "" -}}
 {{- $textClass := printf "text-%s" $color -}}
+{{- $sizeClass := "" -}}
+{{- if eq $size "xs" -}}
+	{{- $sizeClass = "text-xs" -}}
+{{- else if eq $size "sm" -}}
+	{{- $sizeClass = "text-sm" -}}
+{{- end -}}
 {{- $hoverTextClass := "" -}}
 {{- if ne $hoverColor "" -}}
 	{{- $hoverTextClass = printf "group-hover:text-%s" $hoverColor -}}
@@ -46,4 +53,16 @@
 </span>
 {{- else if eq $type "chevron-right" -}}
 <i class="fa-solid fa-chevron-right leading-none rotate-0 transition-transform duration-300 ease-out group-open:rotate-90 motion-reduce:transition-none {{ $textClass }} {{ $hoverTextClass }} {{ $opacityClass }}" aria-hidden="true"></i>
+{{- else if eq $type "file" -}}
+<span class="inline-flex shrink-0 items-center justify-center leading-none {{ $textClass }} {{ $hoverTextClass }}">
+	<i class="fa-solid fa-file {{ $textClass }} {{ $hoverTextClass }} {{ $opacityClass }} {{ $sizeClass }}" aria-hidden="true"></i>
+</span>
+{{- else if eq $type "file-half-dashed" -}}
+<span class="inline-flex shrink-0 items-center justify-center leading-none {{ $textClass }} {{ $hoverTextClass }}">
+	<i class="fa-solid fa-file-half-dashed {{ $textClass }} {{ $hoverTextClass }} {{ $opacityClass }} {{ $sizeClass }}" aria-hidden="true"></i>
+</span>
+{{- else if eq $type "direction" -}}
+<span class="inline-flex shrink-0 items-center justify-center leading-none {{ $textClass }} {{ $hoverTextClass }}">
+	<i class="fa-solid fa-arrows-up-down-left-right {{ $textClass }} {{ $hoverTextClass }} {{ $opacityClass }}" aria-hidden="true"></i>
+</span>
 {{- end -}}

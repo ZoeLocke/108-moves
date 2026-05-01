@@ -1,10 +1,10 @@
 ---
 title: Appear to Close Entrance
-steps: []
+steps: [Left hand to right fist (grab the rope), twist to right, open hands, turn back to left, push]
 weight: 15
-direction:
+direction: Doors
 learned: true
-transition_note:
+transition_note: Sweep to right and turn left foot to right
 build:
     render: never
 ---

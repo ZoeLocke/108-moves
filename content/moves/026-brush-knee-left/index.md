@@ -1,6 +1,6 @@
 ---
 title: Brush Knee (left)
-steps: []
+steps: [Left hand Tiger's Mouth to left knee and right hand pushes]
 weight: 26
 direction:
 learned: true
