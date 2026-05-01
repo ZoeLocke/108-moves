@@ -42,6 +42,7 @@
       "[&[aria-pressed='true']_[data-toggle-dot]]:bg-secondary",
       "[&[aria-pressed='true']_[data-toggle-dot]]:left-auto",
       "[&[aria-pressed='true']_[data-toggle-dot]]:right-0.5",
+      "[&[aria-pressed='true']_[data-toggle-dot]]:translate-x-4",
       "[&[aria-pressed='true']_[data-toggle-track]]:bg-primary/25",
       "[&_li+li]:mt-2",
       "[&_li]:m-0",
