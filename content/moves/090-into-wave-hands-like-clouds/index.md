@@ -1,8 +1,8 @@
 ---
 title: Into Wave Hands Like Clouds
 weight: 90
-direction:
-learned: false
+direction: front
+learned: true
 steps: []
 transition_note:
 build:

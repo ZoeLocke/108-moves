@@ -2,7 +2,7 @@
 title: Golden Cock Stands on One Leg (right)
 weight: 75
 direction:
-learned: false
+learned: true
 steps: []
 transition_note:
 build:

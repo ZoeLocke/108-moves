@@ -2,9 +2,9 @@
 title: Creeping Low Like a Snake
 weight: 100
 direction:
-learned: false
+learned: true
 steps: []
-transition_note: Step up to left foot (?)
+transition_note: Step up to left foot
 build:
     render: never
 ---

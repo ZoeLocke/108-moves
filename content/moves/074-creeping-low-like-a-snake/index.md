@@ -2,7 +2,7 @@
 title: Creeping Low Like a Snake
 weight: 74
 direction:
-learned: false
+learned: true
 steps: []
 transition_note:
 build:
