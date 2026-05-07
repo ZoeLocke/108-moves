@@ -1,5 +1,5 @@
 ---
-title: Go Back to Ward of Monkey (right)
+title: Go Back to Ward Off Monkey (right)
 weight: 20
 steps: [Step back with left leg, left hand scoops to hip and right hand pushes forward]
 direction: left
