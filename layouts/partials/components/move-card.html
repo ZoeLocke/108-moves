@@ -33,17 +33,24 @@
     </span>
   </summary>
 
-  {{- $hasContent := or $move.Params.steps $move.Content -}}
+  {{- $bodyContent := trim $move.Content " \n\r\t" -}}
+  {{- $hasBodyContent := ne $bodyContent "" -}}
+  {{- $hasContent := or $move.Params.steps $hasBodyContent -}}
   {{ if $hasContent }}
   <div class="border-t border-primary/20 bg-surface px-6 pb-5 pt-4 group-data-[size=small]/move-flow:px-4 group-data-[size=small]/move-flow:pb-4 group-data-[size=small]/move-flow:pt-3 group-data-[size=large]/move-flow:px-7 group-data-[size=large]/move-flow:pb-7 group-data-[size=large]/move-flow:pt-5">
+    {{- if and (not $hasBodyContent) $hasSteps -}}
+    <p class="mb-3 hidden rounded-xl bg-not-learned px-3 py-2 text-sm leading-relaxed text-text/80 shadow-sm group-data-[advanced=true]/move-flow:block group-data-[size=small]/move-flow:mb-2 group-data-[size=small]/move-flow:px-2.5 group-data-[size=small]/move-flow:py-1.5 group-data-[size=small]/move-flow:text-xs group-data-[size=large]/move-flow:mb-4 group-data-[size=large]/move-flow:px-4 group-data-[size=large]/move-flow:py-3 group-data-[size=large]/move-flow:text-xl">
+      Advanced details are not available for this move yet. Showing standard mode steps instead.
+    </p>
+    {{- end -}}
     {{ with $move.Params.steps }}
-    <ol class="list-decimal ps-5 text-base leading-relaxed group-data-[advanced=true]/move-flow:hidden group-data-[size=small]/move-flow:ps-4 group-data-[size=small]/move-flow:text-sm group-data-[size=small]/move-flow:[&>li+li]:mt-1.5 group-data-[size=large]/move-flow:ps-6 group-data-[size=large]/move-flow:text-2xl group-data-[size=large]/move-flow:[&>li+li]:mt-3 [&>li+li]:mt-2">
+    <ol class="list-decimal ps-5 text-base leading-relaxed {{ if $hasBodyContent }}group-data-[advanced=true]/move-flow:hidden{{ end }} group-data-[size=small]/move-flow:ps-4 group-data-[size=small]/move-flow:text-sm group-data-[size=small]/move-flow:[&>li+li]:mt-1.5 group-data-[size=large]/move-flow:ps-6 group-data-[size=large]/move-flow:text-2xl group-data-[size=large]/move-flow:[&>li+li]:mt-3 [&>li+li]:mt-2">
       {{- range . -}}
       <li>{{ . }}</li>
       {{- end -}}
     </ol>
     {{ end }}
-    {{ with $move.Content }}
+    {{ with $bodyContent }}
     <div class="hidden text-base leading-relaxed group-data-[advanced=true]/move-flow:block group-data-[size=small]/move-flow:text-sm group-data-[size=small]/move-flow:[&_li+li]:mt-1.5 group-data-[size=small]/move-flow:[&_ol]:ps-4 group-data-[size=large]/move-flow:text-2xl group-data-[size=large]/move-flow:[&_li+li]:mt-3 group-data-[size=large]/move-flow:[&_ol]:ps-6 [&_li+li]:mt-2 [&_li]:m-0 [&_ol]:m-0 [&_ol]:list-decimal [&_ol]:ps-5 [&_ol]:leading-relaxed">
       {{ . }}
     </div>
