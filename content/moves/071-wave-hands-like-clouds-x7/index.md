@@ -1,5 +1,5 @@
 ---
-title: Wave Hands Like Clouds (x7)
+title: Wave Hands Like Clouds (x5)
 steps: []
 weight: 71
 direction:
