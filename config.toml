@@ -29,6 +29,7 @@ title = '108 Moves'
   favicon = 'favicon.svg'
   login_password = 'TCE2026'
   recaptcha_site_key = ''  # Register at https://www.google.com/recaptcha/admin/create and paste your v2 site key here
+  show_steps = false
 
 [taxonomies]
   category = 'categories'
