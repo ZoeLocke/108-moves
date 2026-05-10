@@ -2,6 +2,7 @@
   <h1 class="font-secondary text-3xl font-bold tracking-wider text-primary sm:text-4xl md:text-5xl">{{ .title }}</h1>
 
   <div class="flex shrink-0 flex-col items-end gap-2 sm:flex-row sm:items-center">
+  {{ if .Site.Params.show_steps }}
   <button id="advanced-button" type="button" class="relative inline-flex w-28 cursor-pointer items-center justify-between gap-1.5 rounded-full border border-primary/40 bg-surface px-2.5 py-2 font-primary text-xs font-medium text-text shadow-sm transition-colors duration-200 hover:border-primary hover:bg-primary/10 sm:w-32 sm:gap-2 sm:px-3 sm:text-sm [&[aria-pressed='true']_[data-toggle-track]]:bg-primary/25 [&[aria-pressed='true']_[data-toggle-dot]]:left-auto [&[aria-pressed='true']_[data-toggle-dot]]:right-0.5 [&[aria-pressed='true']_[data-toggle-dot]]:bg-secondary" title="Toggle advanced step descriptions for each move." aria-pressed="false" aria-labelledby="advanced-label advanced-sr-text">
     <span id="advanced-label" aria-hidden="true">Advanced</span>
     <span id="advanced-sr-text" class="absolute -left-full opacity-0 pointer-events-none select-none">advanced mode off</span>
@@ -9,6 +10,7 @@
       <span data-toggle-dot class="absolute left-0.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 rounded-full bg-primary transition-all duration-200 ease-out sm:h-4 sm:w-4"></span>
     </span>
   </button>
+  {{ end }}
   <div class="relative" data-size-control aria-hidden="true">
     <button id="size-menu-button" type="button" class="inline-flex w-28 cursor-pointer items-center justify-between gap-1.5 rounded-full border border-primary/40 bg-surface px-2.5 py-2 font-primary text-xs font-medium text-text shadow-sm transition-colors duration-200 hover:border-primary hover:bg-primary/10 sm:w-32 sm:gap-2 sm:px-3 sm:text-sm" title="Choose card size to fit more moves on screen or improve readability." aria-haspopup="true" aria-expanded="false" aria-controls="size-menu">
       Size: <span id="size-current">Normal</span>

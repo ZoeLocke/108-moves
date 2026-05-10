@@ -4,9 +4,11 @@ description: A guide to using 108 Moves.
 draft: false
 ---
 
-Welcome to 108 Moves. Here you can view the full list of simplified versions of the moves as practised by the Caerphilly beginner class of Tai Chi Evolutions. Each move is a card that can be clicked on and expanded to view step-by-step instructions for the move.
+Welcome to 108 Moves. Here you can view the full list of simplified versions of the moves as practised by the Caerphilly beginner class of Tai Chi Evolutions. <!--Each move is a card that can be clicked on and expanded to view step-by-step instructions for the move.-->
 
+<!-- 
 Use the **Advanced** button to toggle on and off more detailed descriptions of each step of a move.
+-->
 
 Use the **Size** button to change the size of the cards on this screen, so you can have more visible on the screen, or have all text be easier to read. The Size button is hidden from screen readers to improve the screen reader experience.
 
@@ -17,7 +19,8 @@ Use the **Size** button to change the size of the cards on this screen, so you c
 {{< icon type="learned" >}}: Move cards with this icon, also coloured green, are moves that have been covered in class (this will also apply to moves that are further in the set than we have reached, but are repeats of moves we already know).
 
 {{< icon type="unlearned" >}}: Move cards with this icon, also coloured red, are moves that have *not* yet been covered in class.
-
+<!--
 {{< icon type="file" >}}: Indicates that the step-by-step instructions have been added for that move.
 
 {{< icon type="file-half-dashed" >}}: Indicates that step-by-step instructions are still being added, or are yet to be added.
+-->

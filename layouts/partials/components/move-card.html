@@ -5,22 +5,64 @@
 {{- $hasSteps := gt (len ($move.Params.steps | default slice)) 0 -}}
 {{- $directionValue := trim (printf "%v" ($move.Params.direction | default "")) " " -}}
 {{- $hasDirection := ne $directionValue "" -}}
-<details class="group mx-auto w-full overflow-hidden rounded-3xl text-text ring-1 ring-primary/20 shadow-sm transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-xl motion-reduce:transition-none motion-reduce:hover:translate-y-0 md:w-11/12 group-data-[size=small]/move-flow:rounded-2xl group-data-[size=large]/move-flow:rounded-4xl">
-  <summary class="relative {{ $cardBgClass }} flex list-none cursor-pointer items-center justify-between gap-3 rounded-t-3xl px-6 py-4 marker:content-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 group-data-[size=small]/move-flow:gap-2 group-data-[size=small]/move-flow:rounded-t-2xl group-data-[size=small]/move-flow:px-4 group-data-[size=small]/move-flow:py-3 group-data-[size=small]/move-flow:pl-7 group-data-[size=large]/move-flow:gap-4 group-data-[size=large]/move-flow:rounded-t-4xl group-data-[size=large]/move-flow:px-7 group-data-[size=large]/move-flow:py-5">
-    <div class="pointer-events-none absolute left-3 top-2 z-10 h-3 w-3 group-data-[size=small]/move-flow:left-2.5 group-data-[size=small]/move-flow:top-1.5 group-data-[size=large]/move-flow:left-4 group-data-[size=large]/move-flow:top-3">
-      {{- if $hasSteps -}}
-      {{- partial "components/icon.html" (dict "type" "file" "color" "text" "opacity" "25" "size" "xs") -}}
-      {{- else -}}
-      {{- partial "components/icon.html" (dict "type" "file-half-dashed" "color" "text" "opacity" "25" "size" "xs") -}}
+{{ if .Site.Params.show_steps }}
+  <details class="group mx-auto w-full overflow-hidden rounded-3xl text-text ring-1 ring-primary/20 shadow-sm transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-xl motion-reduce:transition-none motion-reduce:hover:translate-y-0 md:w-11/12 group-data-[size=small]/move-flow:rounded-2xl group-data-[size=large]/move-flow:rounded-4xl">
+    <summary class="relative {{ $cardBgClass }} flex list-none cursor-pointer items-center justify-between gap-3 rounded-t-3xl px-6 py-4 marker:content-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 group-data-[size=small]/move-flow:gap-2 group-data-[size=small]/move-flow:rounded-t-2xl group-data-[size=small]/move-flow:px-4 group-data-[size=small]/move-flow:py-3 group-data-[size=small]/move-flow:pl-7 group-data-[size=large]/move-flow:gap-4 group-data-[size=large]/move-flow:rounded-t-4xl group-data-[size=large]/move-flow:px-7 group-data-[size=large]/move-flow:py-5">
+      <div class="pointer-events-none absolute left-3 top-2 z-10 h-3 w-3 group-data-[size=small]/move-flow:left-2.5 group-data-[size=small]/move-flow:top-1.5 group-data-[size=large]/move-flow:left-4 group-data-[size=large]/move-flow:top-3">
+        {{- if $hasSteps -}}
+        {{- partial "components/icon.html" (dict "type" "file" "color" "text" "opacity" "25" "size" "xs") -}}
+        {{- else -}}
+        {{- partial "components/icon.html" (dict "type" "file-half-dashed" "color" "text" "opacity" "25" "size" "xs") -}}
+        {{- end -}}
+      </div>
+      <h2 class="inline-flex min-w-0 flex-1 items-center gap-2 font-secondary text-base font-bold tracking-tight transition-colors duration-200 group-data-[size=small]/move-flow:text-sm group-data-[size=large]/move-flow:text-2xl">
+        <span>{{ $move.Params.weight }}: {{ $move.Title }}</span>
+        {{- if $isLearned -}}
+        {{- partial "components/icon.html" (dict "type" "learned" "color" "text" "opacity" "25") -}}
+        {{- else -}}
+        {{- partial "components/icon.html" (dict "type" "unlearned" "color" "text" "opacity" "25") -}}
+        {{- end -}}
+        {{- if $hasDirection -}}
+        <span class="inline-flex items-center gap-2 pl-2 text-base text-text opacity-25 group-data-[size=small]/move-flow:text-sm group-data-[size=large]/move-flow:text-2xl">
+          {{- partial "components/icon.html" (dict "type" "direction" "color" "text") -}}
+          <span>{{ $directionValue }}</span>
+        </span>
+        {{- end -}}
+      </h2>
+      <span class="inline-flex h-8 w-8 shrink-0 items-center justify-center text-text transition-transform duration-200 group-open:rotate-90 group-data-[size=small]/move-flow:h-6 group-data-[size=small]/move-flow:w-6 group-data-[size=large]/move-flow:h-10 group-data-[size=large]/move-flow:w-10" aria-hidden="true">
+        {{- partial "components/icon.html" (dict "type" "chevron-right" "color" "text") -}}
+      </span>
+    </summary>
+
+    {{- $bodyContent := trim $move.Content " \n\r\t" -}}
+    {{- $hasBodyContent := ne $bodyContent "" -}}
+    {{- $hasContent := or $move.Params.steps $hasBodyContent -}}
+    {{ if $hasContent }}
+    <div class="border-t border-primary/20 bg-surface px-6 pb-5 pt-4 group-data-[size=small]/move-flow:px-4 group-data-[size=small]/move-flow:pb-4 group-data-[size=small]/move-flow:pt-3 group-data-[size=large]/move-flow:px-7 group-data-[size=large]/move-flow:pb-7 group-data-[size=large]/move-flow:pt-5">
+      {{- if and (not $hasBodyContent) $hasSteps -}}
+      <p class="mb-3 hidden rounded-xl bg-not-learned px-3 py-2 text-sm leading-relaxed text-text/80 shadow-sm group-data-[advanced=true]/move-flow:block group-data-[size=small]/move-flow:mb-2 group-data-[size=small]/move-flow:px-2.5 group-data-[size=small]/move-flow:py-1.5 group-data-[size=small]/move-flow:text-xs group-data-[size=large]/move-flow:mb-4 group-data-[size=large]/move-flow:px-4 group-data-[size=large]/move-flow:py-3 group-data-[size=large]/move-flow:text-xl">
+        Advanced details are not available for this move yet. Showing standard mode steps instead.
+      </p>
       {{- end -}}
+      {{ with $move.Params.steps }}
+      <ol class="list-decimal ps-5 text-base leading-relaxed {{ if $hasBodyContent }}group-data-[advanced=true]/move-flow:hidden{{ end }} group-data-[size=small]/move-flow:ps-4 group-data-[size=small]/move-flow:text-sm group-data-[size=small]/move-flow:[&>li+li]:mt-1.5 group-data-[size=large]/move-flow:ps-6 group-data-[size=large]/move-flow:text-2xl group-data-[size=large]/move-flow:[&>li+li]:mt-3 [&>li+li]:mt-2">
+        {{- range . -}}
+        <li>{{ . }}</li>
+        {{- end -}}
+      </ol>
+      {{ end }}
+      {{ with $bodyContent }}
+      <div class="hidden text-base leading-relaxed group-data-[advanced=true]/move-flow:block group-data-[size=small]/move-flow:text-sm group-data-[size=small]/move-flow:[&_li+li]:mt-1.5 group-data-[size=small]/move-flow:[&_ol]:ps-4 group-data-[size=large]/move-flow:text-2xl group-data-[size=large]/move-flow:[&_li+li]:mt-3 group-data-[size=large]/move-flow:[&_ol]:ps-6 [&_li+li]:mt-2 [&_li]:m-0 [&_ol]:m-0 [&_ol]:list-decimal [&_ol]:ps-5 [&_ol]:leading-relaxed">
+        {{ . }}
+      </div>
+      {{ end }}
     </div>
-    <h2 class="inline-flex min-w-0 flex-1 items-center gap-2 font-secondary text-base font-bold tracking-tight transition-colors duration-200 group-data-[size=small]/move-flow:text-sm group-data-[size=large]/move-flow:text-2xl">
+    {{ end }}
+  </details>
+  {{ else }}
+  <div class="relative {{ $cardBgClass }} flex list-none cursor-pointer items-center justify-center gap-3 rounded-3xl px-6 py-4 marker:content-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 group-data-[size=small]/move-flow:gap-2 group-data-[size=small]/move-flow:rounded-2xl group-data-[size=small]/move-flow:px-4 group-data-[size=small]/move-flow:py-3 group-data-[size=small]/move-flow:pl-7 group-data-[size=large]/move-flow:gap-4 group-data-[size=large]/move-flow:rounded-4xl group-data-[size=large]/move-flow:px-7 group-data-[size=large]/move-flow:py-5">
+    <h2 class="inline-flex min-w-0 items-center gap-2 font-secondary text-base font-bold tracking-tight transition-colors duration-200 group-data-[size=small]/move-flow:text-sm group-data-[size=large]/move-flow:text-2xl">
       <span>{{ $move.Params.weight }}: {{ $move.Title }}</span>
-      {{- if $isLearned -}}
-      {{- partial "components/icon.html" (dict "type" "learned" "color" "text" "opacity" "25") -}}
-      {{- else -}}
-      {{- partial "components/icon.html" (dict "type" "unlearned" "color" "text" "opacity" "25") -}}
-      {{- end -}}
       {{- if $hasDirection -}}
       <span class="inline-flex items-center gap-2 pl-2 text-base text-text opacity-25 group-data-[size=small]/move-flow:text-sm group-data-[size=large]/move-flow:text-2xl">
         {{- partial "components/icon.html" (dict "type" "direction" "color" "text") -}}
@@ -28,33 +70,5 @@
       </span>
       {{- end -}}
     </h2>
-    <span class="inline-flex h-8 w-8 shrink-0 items-center justify-center text-text transition-transform duration-200 group-open:rotate-90 group-data-[size=small]/move-flow:h-6 group-data-[size=small]/move-flow:w-6 group-data-[size=large]/move-flow:h-10 group-data-[size=large]/move-flow:w-10" aria-hidden="true">
-      {{- partial "components/icon.html" (dict "type" "chevron-right" "color" "text") -}}
-    </span>
-  </summary>
-
-  {{- $bodyContent := trim $move.Content " \n\r\t" -}}
-  {{- $hasBodyContent := ne $bodyContent "" -}}
-  {{- $hasContent := or $move.Params.steps $hasBodyContent -}}
-  {{ if $hasContent }}
-  <div class="border-t border-primary/20 bg-surface px-6 pb-5 pt-4 group-data-[size=small]/move-flow:px-4 group-data-[size=small]/move-flow:pb-4 group-data-[size=small]/move-flow:pt-3 group-data-[size=large]/move-flow:px-7 group-data-[size=large]/move-flow:pb-7 group-data-[size=large]/move-flow:pt-5">
-    {{- if and (not $hasBodyContent) $hasSteps -}}
-    <p class="mb-3 hidden rounded-xl bg-not-learned px-3 py-2 text-sm leading-relaxed text-text/80 shadow-sm group-data-[advanced=true]/move-flow:block group-data-[size=small]/move-flow:mb-2 group-data-[size=small]/move-flow:px-2.5 group-data-[size=small]/move-flow:py-1.5 group-data-[size=small]/move-flow:text-xs group-data-[size=large]/move-flow:mb-4 group-data-[size=large]/move-flow:px-4 group-data-[size=large]/move-flow:py-3 group-data-[size=large]/move-flow:text-xl">
-      Advanced details are not available for this move yet. Showing standard mode steps instead.
-    </p>
-    {{- end -}}
-    {{ with $move.Params.steps }}
-    <ol class="list-decimal ps-5 text-base leading-relaxed {{ if $hasBodyContent }}group-data-[advanced=true]/move-flow:hidden{{ end }} group-data-[size=small]/move-flow:ps-4 group-data-[size=small]/move-flow:text-sm group-data-[size=small]/move-flow:[&>li+li]:mt-1.5 group-data-[size=large]/move-flow:ps-6 group-data-[size=large]/move-flow:text-2xl group-data-[size=large]/move-flow:[&>li+li]:mt-3 [&>li+li]:mt-2">
-      {{- range . -}}
-      <li>{{ . }}</li>
-      {{- end -}}
-    </ol>
-    {{ end }}
-    {{ with $bodyContent }}
-    <div class="hidden text-base leading-relaxed group-data-[advanced=true]/move-flow:block group-data-[size=small]/move-flow:text-sm group-data-[size=small]/move-flow:[&_li+li]:mt-1.5 group-data-[size=small]/move-flow:[&_ol]:ps-4 group-data-[size=large]/move-flow:text-2xl group-data-[size=large]/move-flow:[&_li+li]:mt-3 group-data-[size=large]/move-flow:[&_ol]:ps-6 [&_li+li]:mt-2 [&_li]:m-0 [&_ol]:m-0 [&_ol]:list-decimal [&_ol]:ps-5 [&_ol]:leading-relaxed">
-      {{ . }}
-    </div>
-    {{ end }}
   </div>
-  {{ end }}
-</details>
+{{ end }}
