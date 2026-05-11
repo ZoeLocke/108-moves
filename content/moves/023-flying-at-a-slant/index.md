@@ -4,7 +4,7 @@ steps: [Step up to hold ball on left foot, step right foot forwards, right hand 
 weight: 23
 direction: Front
 learned: true
-transition_note: Step up to left foot
+transition_note: Step up to left foot, place right foot forward on heel
 build:
     render: never
 ---

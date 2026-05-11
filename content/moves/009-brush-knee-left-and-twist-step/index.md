@@ -4,7 +4,7 @@ steps: [Left hand Tiger's Mouth to left knee and right hand pushes, twist left f
 weight: 9
 direction: Left
 learned: true
-transition_note: Sweep hands out to front and back, right foot and hand forwards
+transition_note: Sweep hands out forwards and backwards, right foot and hand forwards
 build:
     render: never
 ---

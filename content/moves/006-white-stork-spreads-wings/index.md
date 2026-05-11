@@ -4,7 +4,7 @@ steps: [Step forward with right foot, right hand to knee and left hand pushes, s
 weight: 6
 direction: Left
 learned: true
-transition_note: Lower right hand, sweep hands out to front and back, left foot and hand are forwards
+transition_note: Sweep hands out forwards and backwards, left foot and hand are forwards
 build:
     render: never
 ---

@@ -4,7 +4,7 @@ steps: []
 weight: 28
 direction:
 learned: true
-transition_note:
+transition_note: No transition
 build:
     render: never
 ---
