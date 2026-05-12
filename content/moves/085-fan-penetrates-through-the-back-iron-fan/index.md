@@ -1,10 +1,10 @@
 ---
 title: Fan Penetrates Through the Back (Iron Fan)
 weight: 85
-direction:
+direction: Left
 learned: true
 steps: []
-transition_note:
+transition_note: Rise up from push
 build:
     render: never
 ---

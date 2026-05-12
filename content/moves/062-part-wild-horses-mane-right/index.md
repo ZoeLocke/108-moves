@@ -2,9 +2,9 @@
 title: Part Wild Horse's Mane (right)
 steps: []
 weight: 62
-direction:
+direction: Right to Back/Right
 learned: true
-transition_note: Step up to right foot and hold the ball
+transition_note: Step up to hold ball on right foot
 build:
     render: never
 ---
