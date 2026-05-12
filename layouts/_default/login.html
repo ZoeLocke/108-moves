@@ -43,7 +43,9 @@
       </div>
 
       {{ with .Site.Params.recaptcha_site_key }}
-      <div class="g-recaptcha" data-sitekey="{{ . }}"></div>
+      <div class="flex w-full justify-center">
+        <div class="g-recaptcha" data-sitekey="{{ . }}"></div>
+      </div>
       {{ end }}
 
       <p id="login-error" class="hidden text-sm font-medium text-secondary" role="alert" aria-live="polite"></p>
