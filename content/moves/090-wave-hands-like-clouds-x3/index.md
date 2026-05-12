@@ -1,6 +1,6 @@
 ---
 title: Wave Hands Like Clouds (x3)
-weight: 91
+weight: 90
 direction: Front
 learned: true
 steps: []

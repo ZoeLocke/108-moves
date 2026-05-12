@@ -1,6 +1,6 @@
 ---
 title: Seven Stars
-weight: 101
+weight: 100
 direction: Left
 learned: false
 steps: []

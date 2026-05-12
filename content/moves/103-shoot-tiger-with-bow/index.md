@@ -1,6 +1,6 @@
 ---
 title: Shoot Tiger with Bow
-weight: 104
+weight: 103
 direction: Left
 learned: false
 steps: []

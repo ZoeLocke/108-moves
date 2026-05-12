@@ -1,6 +1,6 @@
 ---
 title: Go Back to Ward Off Monkey (right)
-weight: 77
+weight: 78
 direction: Left
 learned: true
 steps: []

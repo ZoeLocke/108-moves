@@ -1,6 +1,6 @@
 ---
 title: Turn Around to Sweep Lotus
-weight: 103
+weight: 102
 direction: Back/Left
 learned: false
 steps: []

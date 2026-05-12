@@ -1,6 +1,6 @@
 ---
 title: Creeping Low Like a Snake
-weight: 100
+weight: 99
 direction: Left
 learned: true
 steps: []

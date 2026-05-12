@@ -1,6 +1,6 @@
 ---
 title: Retreat to Ride Tiger
-weight: 102
+weight: 101
 direction: Back/Left
 learned: false
 steps: []

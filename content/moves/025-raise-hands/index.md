@@ -1,7 +1,7 @@
 ---
 title: Raise Hands
 steps: [Set right foot on heel, right arm up like chopper, left hand squeezes right elbow]
-weight: 24
+weight: 25
 direction: Front/Left
 learned: true
 transition_note: Stroke the big dog once, twice, and hold ball back on left foot

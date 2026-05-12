@@ -1,6 +1,6 @@
 ---
 title: Grasp Bird's Tail
-weight: 98
+weight: 97
 direction: Left
 learned: true
 steps: [Step up to hold ball, step to the right, 3 finger push, palms push, open-handed push]

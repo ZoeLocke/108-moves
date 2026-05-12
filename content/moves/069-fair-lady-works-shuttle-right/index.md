@@ -1,7 +1,7 @@
 ---
 title: Fair Lady Works Shuttle (right)
 steps: []
-weight: 66
+weight: 69
 direction: Front/Right
 learned: true
 transition_note: Step up to hold ball on right foot

@@ -1,6 +1,6 @@
 ---
 title: Go Back to Ward Off Monkey (right)
-weight: 22
+weight: 23
 steps: [Step back with left leg,left hand scoops to hip and right hand pushes forward]
 direction: Left
 learned: true

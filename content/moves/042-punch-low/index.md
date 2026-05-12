@@ -1,7 +1,7 @@
 ---
 title: Punch Low
 steps: []
-weight: 43
+weight: 42
 direction: Left
 learned: true
 transition_note: Rise up from push

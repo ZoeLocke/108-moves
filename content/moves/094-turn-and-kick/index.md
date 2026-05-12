@@ -1,6 +1,6 @@
 ---
 title: Turn and Kick
-weight: 96
+weight: 94
 direction: Right
 learned: true
 steps: []

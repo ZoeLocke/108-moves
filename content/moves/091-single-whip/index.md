@@ -1,6 +1,6 @@
 ---
 title: Single Whip
-weight: 93
+weight: 91
 direction: Left
 learned: true
 steps: [Scoop with arms, right arm out and grab the teabag, turn and push]

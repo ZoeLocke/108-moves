@@ -1,6 +1,6 @@
 ---
 title: Brush Knee and Punch
-weight: 97
+weight: 96
 direction: Right
 learned: true
 steps: []

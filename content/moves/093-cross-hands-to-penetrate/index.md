@@ -1,6 +1,6 @@
 ---
 title: Cross Hands to Penetrate
-weight: 95
+weight: 93
 direction: Front
 learned: false
 steps: []

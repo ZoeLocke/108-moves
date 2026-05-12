@@ -1,6 +1,6 @@
 ---
 title: High Pat on Horse
-weight: 94
+weight: 92
 direction: Left
 learned: true
 steps: []
