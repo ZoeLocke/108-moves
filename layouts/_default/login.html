@@ -69,6 +69,18 @@
       var siteKey = {{ .Site.Params.recaptcha_site_key | default "" | jsonify }};
       var verifyEndpoint = {{ .Site.Params.recaptcha_verify_endpoint | default "" | jsonify }};
 
+      function normalizeConfigString(value) {
+        if (typeof value !== 'string') return '';
+        var trimmed = value.trim();
+        if (trimmed.length >= 2 && trimmed[0] === '"' && trimmed[trimmed.length - 1] === '"') {
+          return trimmed.slice(1, -1);
+        }
+        return trimmed;
+      }
+
+      siteKey = normalizeConfigString(siteKey);
+      verifyEndpoint = normalizeConfigString(verifyEndpoint);
+
       function showError(msg) {
         errorEl.textContent = msg;
         errorEl.classList.remove('hidden');
