@@ -27,7 +27,7 @@ title = '108 Moves'
 [params]
   description = 'A step-by-step guide to the simplified versions of the 108 moves of Tai Chi as practised by the Caerphilly beginner class of Tai Chi Evolutions.'
   favicon = 'favicon.svg'
-  recaptcha_site_key = '6Ld6euYsAAAAADuNpRuOxCIg8dGyVO3uOlBJN6Kq'
+  recaptcha_site_key = '6LcIieYsAAAAADUZSbM4lC0nRp70GZ6B4kcwNg1G'
   recaptcha_verify_endpoint = 'https://my-netlify-functions.netlify.app/api/verify-recaptcha"'
   show_steps = false
 
