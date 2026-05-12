@@ -1,9 +1,11 @@
 {{ define "main" }}
 {{- $moves := where .Site.RegularPages "Section" "moves" -}}
 {{- $moves = sort $moves "Params.weight" "asc" -}}
-<section class="mx-auto -mt-8 max-w-4xl space-y-7 font-primary text-text md:-mt-6">
-  {{- partial "components/move-controls-bar.html" (dict "title" "108 Moves") -}}
+<div class="-mt-8 font-primary text-text md:-mt-6">
+  {{- partial "components/move-controls-bar.html" (dict "title" "108 Moves" "Site" .Site) -}}
+</div>
 
+<section class="mx-auto max-w-4xl space-y-7 font-primary text-text">
   <div id="move-flow" class="group/move-flow pt-2" data-size="normal" data-advanced="false">
     {{- range $index, $move := $moves -}}
       {{- partial "components/move-card.html" (dict "move" $move) -}}
