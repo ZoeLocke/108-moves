@@ -66,34 +66,70 @@
 
       var form = document.getElementById('login-form');
       var errorEl = document.getElementById('login-error');
-      var siteKey = '{{ .Site.Params.recaptcha_site_key }}';
-      var correctPassword = '{{ .Site.Params.login_password }}';
+      var siteKey = {{ .Site.Params.recaptcha_site_key | default "" | jsonify }};
+      var verifyEndpoint = {{ .Site.Params.recaptcha_verify_endpoint | default "" | jsonify }};
 
       function showError(msg) {
         errorEl.textContent = msg;
         errorEl.classList.remove('hidden');
       }
 
-      form.addEventListener('submit', function (e) {
+      function verifyLogin(password, captchaToken) {
+        if (!verifyEndpoint) {
+          throw new Error('endpoint_not_configured');
+        }
+        return fetch(verifyEndpoint, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ password: password, token: captchaToken })
+        }).then(function (res) {
+          if (!res.ok) {
+            throw new Error('verification_failed');
+          }
+          return res.json();
+        }).then(function (data) {
+          return data && data.success === true;
+        });
+      }
+
+      form.addEventListener('submit', async function (e) {
         e.preventDefault();
         errorEl.classList.add('hidden');
 
+        var pw = document.getElementById('password').value;
+        var token = '';
+
         if (siteKey) {
-          var token = (typeof grecaptcha !== 'undefined') ? grecaptcha.getResponse() : '';
+          token = (typeof grecaptcha !== 'undefined') ? grecaptcha.getResponse() : '';
           if (!token) {
             showError('Please complete the CAPTCHA.');
             return;
           }
         }
 
-        var pw = document.getElementById('password').value;
-        if (pw === correctPassword) {
-          sessionStorage.setItem('tce_auth', '1');
-          location.replace('{{ "" | absLangURL }}');
-        } else {
-          showError('Incorrect password. Please try again.');
+        if (!verifyEndpoint) {
+          showError('Login is not fully configured.');
+          return;
+        }
+
+        try {
+          var isValid = await verifyLogin(pw, token);
+          if (isValid) {
+            sessionStorage.setItem('tce_auth', '1');
+            location.replace('{{ "" | absLangURL }}');
+          } else {
+            showError('Incorrect password or CAPTCHA. Please try again.');
+            document.getElementById('password').value = '';
+            document.getElementById('password').focus();
+            if (siteKey && typeof grecaptcha !== 'undefined') {
+              grecaptcha.reset();
+            }
+          }
+        } catch (err) {
+          showError('Could not verify login. Please try again.');
           document.getElementById('password').value = '';
-          document.getElementById('password').focus();
           if (siteKey && typeof grecaptcha !== 'undefined') {
             grecaptcha.reset();
           }
