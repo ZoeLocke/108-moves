@@ -209,6 +209,7 @@
       "pb-4",
       "pl-2",
       "pr-18",
+      "prose",
       "pt-2",
       "px-2.5",
       "px-3",
@@ -296,6 +297,7 @@
       "z-50"
     ],
     "ids": [
+      "changelog",
       "login-error",
       "login-form",
       "logout-button",

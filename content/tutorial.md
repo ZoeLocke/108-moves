@@ -24,3 +24,7 @@ Use the **Size** button to change the size of the cards on this screen, so you c
 
 {{< icon type="file-half-dashed" >}}: Indicates that step-by-step instructions are still being added, or are yet to be added.
 -->
+
+## Changelog
+
+**1.0.1** *2026/05/14* Updated move transitions around Fair Lady and fixed incorrect move after Turn and Kick.

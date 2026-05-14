@@ -4,7 +4,7 @@ steps: []
 weight: 66
 direction: Front/Right
 learned: true
-transition_note: Sweep right to Back, step right foot back, sweep right to Left, step to Front/Left with right foot
+transition_note: Sweep left foot right to Back, pull right foot backwards, sweep left foot right to Left, step through on right foot to Front/Left
 build:
     render: never
 ---
