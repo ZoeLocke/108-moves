@@ -15,13 +15,13 @@
         {{- partial "components/icon.html" (dict "type" "file-half-dashed" "color" "text" "opacity" "25" "size" "xs") -}}
         {{- end -}}
       </div>
-      <h2 class="inline-flex min-w-0 flex-1 items-center gap-2 font-secondary text-base font-bold tracking-tight transition-colors duration-200 group-data-[size=small]/move-flow:text-sm group-data-[size=large]/move-flow:text-2xl">
-        <span>{{ $move.Params.weight }}: {{ $move.Title }}</span>
+      <h2 class="inline-flex min-w-0 flex-1 items-center gap-2 font-secondary text-base font-bold tracking-tight transition-colors duration-200 group-data-[size=small]/move-flow:text-sm group-data-[size=large]/move-flow:text-2xl justify-center text-center">
         {{- if $isLearned -}}
-        {{- partial "components/icon.html" (dict "type" "learned" "color" "text" "opacity" "25") -}}
+          {{- partial "components/icon.html" (dict "type" "learned" "color" "text" "opacity" "25") -}}
         {{- else -}}
-        {{- partial "components/icon.html" (dict "type" "unlearned" "color" "text" "opacity" "25") -}}
+          {{- partial "components/icon.html" (dict "type" "unlearned" "color" "text" "opacity" "25") -}}
         {{- end -}}
+        <span class="pl-2">{{ $move.Params.weight }}: {{ $move.Title }}</span>
         {{- if $hasDirection -}}
         <span class="inline-flex items-center gap-2 pl-2 text-base text-text opacity-25 group-data-[size=small]/move-flow:text-sm group-data-[size=large]/move-flow:text-2xl">
           {{- partial "components/icon.html" (dict "type" "direction" "color" "text") -}}
@@ -62,7 +62,12 @@
   {{ else }}
   <div class="relative {{ $cardBgClass }} flex list-none items-center justify-center gap-3 rounded-3xl px-6 py-4 marker:content-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 group-data-[size=small]/move-flow:gap-2 group-data-[size=small]/move-flow:rounded-2xl group-data-[size=small]/move-flow:px-4 group-data-[size=small]/move-flow:py-3 group-data-[size=small]/move-flow:pl-7 group-data-[size=large]/move-flow:gap-4 group-data-[size=large]/move-flow:rounded-4xl group-data-[size=large]/move-flow:px-7 group-data-[size=large]/move-flow:py-5">
     <h2 class="inline-flex min-w-0 items-center gap-2 font-secondary text-base font-bold tracking-tight transition-colors duration-200 group-data-[size=small]/move-flow:text-sm group-data-[size=large]/move-flow:text-2xl">
-      <span>{{ $move.Params.weight }}: {{ $move.Title }}</span>
+        {{- if $isLearned -}}
+          {{- partial "components/icon.html" (dict "type" "learned" "color" "text" "opacity" "25") -}}
+        {{- else -}}
+          {{- partial "components/icon.html" (dict "type" "unlearned" "color" "text" "opacity" "25") -}}
+        {{- end -}}
+      <span class="pl-2">{{ $move.Params.weight }}: {{ $move.Title }}</span>
       {{- if $hasDirection -}}
       <span class="inline-flex items-center gap-2 pl-2 text-base text-text opacity-25 group-data-[size=small]/move-flow:text-sm group-data-[size=large]/move-flow:text-2xl">
         {{- partial "components/icon.html" (dict "type" "direction" "color" "text") -}}
