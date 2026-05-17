@@ -27,6 +27,7 @@ Use the **Size** button to change the size of the cards on this screen, so you c
 
 ## Changelog
 
+- **1.2.0** *2026/05/17* Added site logo, navigation styling, and improved password reveal.
 - **1.1.2** *2026/05/17* Added privacy notice.
 - **1.1.1** *2026/05/17* Minor fixes and improvements to move transitions.
 - **1.1.0** *2026/05/17* Facing directions in move transitions are now bolded and coloured to make their meaning clearer.

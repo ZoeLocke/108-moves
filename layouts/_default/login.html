@@ -62,6 +62,12 @@
             <span id="password-toggle-text" class="sr-only">Show password</span>
           </button>
         </div>
+        <style>
+          /* Hide custom toggle if browser provides its own (WebKit, iOS, etc.) */
+          input[type="password"].has-native-reveal + #password-toggle {
+            display: none !important;
+          }
+        </style>
       </div>
 
       {{ if and .Site.Params.recaptcha_site_key (not hugo.IsDevelopment) }}
@@ -121,6 +127,19 @@
         errorEl.classList.remove('hidden');
       }
 
+      // Hide custom toggle if browser provides its own
+      if (passwordInput) {
+        // iOS Safari and some browsers add their own reveal button
+        var hasNativeReveal = false;
+        try {
+          var test = document.createElement('input');
+          test.type = 'password';
+          hasNativeReveal = 'webkitShowPassword' in test || navigator.userAgent.match(/iPhone|iPad|iPod|Android/i);
+        } catch (e) {}
+        if (hasNativeReveal) {
+          passwordInput.classList.add('has-native-reveal');
+        }
+      }
       if (passwordInput && passwordToggle && passwordToggleText && passwordToggleIconShow && passwordToggleIconHide) {
         passwordToggle.addEventListener('click', function () {
           var reveal = passwordInput.type === 'password';
