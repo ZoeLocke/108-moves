@@ -1,7 +1,7 @@
 <header id="site-header" class="sticky top-0 z-50 border-b border-primary/30 bg-bg/95 shadow-sm backdrop-blur supports-backdrop-filter:bg-bg/80">
   <div class="mx-auto flex w-full max-w-5xl items-center justify-between px-4 py-3 sm:px-6 md:py-4 lg:px-8">
-    <a href="{{ "" | absLangURL }}" class="font-secondary text-xl font-bold tracking-wide text-primary no-underline transition-colors duration-200 hover:text-secondary">
-      {{ .Site.Title }}
+    <a href="{{ "" | absLangURL }}" class="flex items-center" aria-label="Home">
+      <img src="{{ "images/favicon.svg" | absURL }}" alt="108 Moves logo" class="h-8 w-8" style="min-width:2rem;min-height:2rem;" />
     </a>
 
     <nav aria-label="Main navigation" class="flex flex-wrap items-center justify-end gap-1.5 text-sm font-primary md:gap-3">
