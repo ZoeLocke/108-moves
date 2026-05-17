@@ -4,7 +4,7 @@ weight: 90
 direction: Front
 learned: true
 steps: []
-transition_note: Sweep around left to Left, drag left foot back
+transition_note: Sweep around left to face **Left**, drag left foot backwards
 build:
     render: never
 ---

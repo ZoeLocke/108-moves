@@ -4,7 +4,7 @@ steps: [Right leg sweeps wide around to right, left hand Tiger's Mouth to left k
 weight: 56
 direction: Back/Right
 learned: true
-transition_note: Sweep left and turn to face Front
+transition_note: Sweep around left to face **Front**
 build:
     render: never
 ---

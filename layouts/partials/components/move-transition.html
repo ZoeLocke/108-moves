@@ -6,7 +6,7 @@
     <span class="flex h-6 w-6 shrink-0 items-center justify-center text-secondary group-data-[size=small]/move-flow:h-5 group-data-[size=small]/move-flow:w-5 group-data-[size=large]/move-flow:h-8 group-data-[size=large]/move-flow:w-8">
       <i class="fa-solid fa-code-commit block leading-none" aria-hidden="true"></i>
     </span>
-    <p>{{ . }}</p>
+    <p class="[&_strong]:text-secondary">{{ . | markdownify }}</p>
   </div>
   {{ end }}
 

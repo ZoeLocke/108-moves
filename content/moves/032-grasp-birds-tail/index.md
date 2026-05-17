@@ -4,7 +4,7 @@ steps: [Step up to hold ball, step to the right, 3 finger push, palms push, open
 weight: 32
 direction: Left
 learned: true
-transition_note: Sweep left to face Left
+transition_note: Sweep around left to face **Left**
 build:
     render: never
 ---

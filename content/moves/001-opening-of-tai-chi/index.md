@@ -3,7 +3,7 @@ title: Opening of Tai Chi
 weight: 1
 learned: true
 direction: Front
-steps: [Raise arms, Lower arms, turn to right, push out and down]
+steps: [Raise arms, lower arms, turn to right, push out and down]
 transition_note: Step up to hold ball on right foot
 build:
     render: never

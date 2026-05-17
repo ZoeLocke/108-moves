@@ -4,7 +4,7 @@ weight: 79
 direction: Left
 learned: true
 steps: []
-transition_note: Sweep right to Front, turn left foot to Front, stand to hold ball on left foot
+transition_note: Sweep around right to face **Front**, turn left foot on heel to **Front**, stand to hold ball on left foot
 build:
     render: never
 ---
