@@ -6,7 +6,10 @@
 
     <nav aria-label="Main navigation" class="flex flex-wrap items-center justify-end gap-1.5 text-sm font-primary md:gap-3">
       {{ range .Site.Menus.main }}
-      <a href="{{ .URL | relLangURL }}" class="inline-flex items-center rounded-full px-2.5 py-1.5 text-sm font-medium text-text/80 no-underline transition-colors duration-200 hover:bg-primary/20 hover:text-primary sm:px-3 sm:text-base" title="{{ .Name }}">
+      {{ $isCurrent := or (and (eq .Name "Home") $.IsHome) (and (eq .Name "Tutorial") (eq (replaceRE "/$" "" (.URL | relLangURL)) (replaceRE "/$" "" $.RelPermalink))) }}
+      <a href="{{ .URL | relLangURL }}"
+         class="inline-flex items-center rounded-full px-2.5 py-1.5 text-sm font-medium no-underline transition-colors duration-200 sm:px-3 sm:text-base{{ if $isCurrent }} bg-primary/20 text-primary{{ else }} text-text/80 hover:bg-primary/20 hover:text-primary{{ end }}"
+         title="{{ .Name }}">
         {{ .Name }}
       </a>
       {{ end }}
