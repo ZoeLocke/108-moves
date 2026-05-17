@@ -2,9 +2,9 @@
 <article class="space-y-7 rounded-3xl border border-primary/20 bg-surface/85 p-6 font-primary text-text shadow-sm md:p-8">
   <header class="space-y-2 border-b border-primary/15 pb-4">
     <h1 class="font-secondary text-3xl font-bold tracking-tight text-primary md:text-4xl">{{ .Title }}</h1>
-    {{ with .Date }}
+    {{ with .Lastmod }}
     <p class="text-sm font-medium text-text/60">
-      <time datetime="{{ .Format "2006-01-02" }}">{{ .Format "2 January 2006" }}</time>
+      Last Modified: <time datetime="{{ .Format "2006-01-02" }}">{{ .Format "2 January 2006" }}</time>
     </p>
     {{ end }}
   </header>
