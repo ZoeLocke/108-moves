@@ -6,7 +6,7 @@
 </div>
 
 <section class="mx-auto max-w-4xl space-y-7 font-primary text-text">
-  <div id="move-flow" class="group/move-flow pt-2" data-size="normal" data-advanced="false">
+  <div id="move-flow" class="group/move-flow pt-2" data-size="normal">
     {{- range $index, $move := $moves -}}
       {{- partial "components/move-card.html" (dict "move" $move) -}}
       {{- if lt (add $index 1) (len $moves) -}}
@@ -19,23 +19,62 @@
 <script>
   (() => {
     const flow = document.getElementById("move-flow");
-    const advancedButton = document.getElementById("advanced-button");
-    const advancedSrText = document.getElementById("advanced-sr-text");
 
-    if (advancedButton && flow) {
-      const advancedKey = "moveFlowAdvanced";
-      const setAdvanced = (on) => {
-        flow.dataset.advanced = on ? "true" : "false";
-        advancedButton.setAttribute("aria-pressed", on ? "true" : "false");
-        if (advancedSrText) {
-          advancedSrText.textContent = on ? "advanced mode on" : "advanced mode off";
+    if (flow) {
+      const loadVideoForDetails = (details) => {
+        const video = details.querySelector("video[data-lazy-video]");
+        if (!video || video.dataset.loaded === "true") return;
+        if (!video.dataset.src) return;
+
+        const videoError = details.querySelector("[data-video-error]");
+        const webmUrl = video.dataset.srcWebm;
+        const mp4Url = video.dataset.srcMp4;
+        let currentSource = "webm";
+
+        const showVideoError = () => {
+          if (videoError) {
+            videoError.classList.remove("hidden");
+          }
+          video.classList.add("hidden");
+        };
+
+        const tryNextFormat = () => {
+          if (currentSource === "webm" && mp4Url) {
+            currentSource = "mp4";
+            video.src = mp4Url;
+            video.load();
+          } else {
+            showVideoError();
+          }
+        };
+
+        if (video.dataset.errorBound !== "true") {
+          video.addEventListener("error", tryNextFormat);
+          video.addEventListener("stalled", tryNextFormat);
+          video.addEventListener("loadeddata", () => {
+            if (videoError) {
+              videoError.classList.add("hidden");
+            }
+            video.classList.remove("hidden");
+          });
+          video.dataset.errorBound = "true";
         }
-        localStorage.setItem(advancedKey, on ? "true" : "false");
+
+        video.src = webmUrl || mp4Url;
+        video.load();
+        video.dataset.loaded = "true";
       };
-      const storedAdvanced = localStorage.getItem(advancedKey);
-      setAdvanced(storedAdvanced === "true");
-      advancedButton.addEventListener("click", () => {
-        setAdvanced(flow.dataset.advanced !== "true");
+
+      flow.querySelectorAll("details").forEach((details) => {
+        if (details.open) {
+          loadVideoForDetails(details);
+        }
+
+        details.addEventListener("toggle", () => {
+          if (details.open) {
+            loadVideoForDetails(details);
+          }
+        });
       });
     }
 
