@@ -1,17 +1,20 @@
 # 108 Moves
 
-A step-by-step guide to the simplified versions of the 108 moves of Tai Chi as practised by the Caerphilly beginner class of Tai Chi Evolutions.
+A visual guide to the 108 moves of Tai Chi as practised by the Caerphilly beginner class of Tai Chi Evolutions. Each move features instructional videos with responsive fallback support.
 
 Built with Hugo and Tailwind CSS v4.
 
 ## Features
 
-- All 108 moves defined in `content/_index.md` front matter and rendered automatically
-- Each move is a collapsible card showing step-by-step instructions
-- Adjustable card size (Small, Normal, Large) persisted in local storage
-- Connector lines and transition notes between moves
-- Sticky navbar and title bar for easy access while scrolling
-- Collapsible tutorial block at the top of the page
+- All 108 moves rendered from individual content files
+- Collapsible move cards with descriptive prose content
+- Embedded instructional videos (WebM with MP4 fallback) for each move
+- Lazy-loaded videos that only load when a card is opened
+- Automatic format fallback if WebM fails to load or render
+- Adjustable card size (Small, Normal, Large) persisted to local storage
+- Connector lines with transition notes between moves
+- Sticky header for navigation while scrolling
+- Fully responsive and accessible design
 
 ## Getting Started
 
@@ -36,23 +39,36 @@ hugo
 
 ## Adding or Editing Moves
 
-All moves are defined in `content/_index.md` as a `moves` front matter array. Each entry supports:
+Each move is a separate directory under `content/moves/` with an `index.md` file. Each move supports:
 
 | Field | Required | Description |
 |---|---|---|
-| `name` | Yes | Display name of the move |
-| `weight` | Yes | Sort order (ascending) |
-| `steps` | Yes | Array of step descriptions |
-| `transition_note` | No | Short note shown in the connector between this move and the next |
+| `title` | Yes | Display name of the move |
+| `weight` | Yes | Sort order (ascending, 1–108) |
+| `learned` | Yes | Boolean indicating if the move is in active rotation |
+| `direction` | No | Direction of movement (e.g., "Left", "Front", "Right") |
+| `transition_note` | No | Short note shown in the connector to the next move |
+| Content body | No | Prose description of the move (supports Markdown) |
+
+### Media Files
+
+Each move directory can optionally include:
+- `*.webm` — WebM video file (preferred format for efficiency)
+- `*.mp4` — MP4 video file (fallback if WebM fails)
+
+Videos are lazily loaded only when the move card is expanded. If a WebM file fails to load or stall during playback, the player automatically switches to MP4.
 
 ## Project Structure
 
-- `config.toml` — site config, favicon path, and build settings
-- `content/_index.md` — all move data and homepage prose
-- `assets/css/main.css` — Tailwind entry file and theme tokens (`@theme`)
-- `assets/css/modules/layout.css` — base styles and move-flow size system
-- `layouts/index.html` — homepage template with size controls
-- `layouts/partials/components/move-card.html` — collapsible move card partial
-- `layouts/partials/components/move-transition.html` — connector and transition note partial
-- `layouts/partials/components/rich-content-classes.html` — shared prose Tailwind classes
-- `static/favicon.svg` — site favicon
+- `config.toml` — site configuration and parameters
+- `content/moves/` — 108 individual move directories, each with `index.md` and optional video files
+- `content/login.md`, `content/privacy.md`, `content/tutorial.md` — static pages
+- `assets/css/main.css` — Tailwind entry point with CSS custom properties (`@theme`)
+- `assets/css/modules/layout.css` — responsive sizing system and base styles
+- `layouts/index.html` — homepage template with move flow container and size controls
+- `layouts/_default/` — standard Hugo layout templates
+- `layouts/partials/components/move-card.html` — collapsible move card with video player
+- `layouts/partials/components/move-transition.html` — visual connector and transition note
+- `layouts/partials/components/move-controls-bar.html` — header with size menu
+- `layouts/partials/header.html`, `footer.html` — global header and footer
+- `static/robots.txt`, `static/images/` — static assets
