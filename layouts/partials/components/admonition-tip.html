@@ -1,0 +1,14 @@
+{{- with .tip -}}
+<div class="rounded-2xl border-l-4 border-secondary bg-secondary/10 px-4 py-3 group-data-[size=small]/move-flow:px-3 group-data-[size=small]/move-flow:py-2 group-data-[size=large]/move-flow:px-5 group-data-[size=large]/move-flow:py-4">
+  <div class="flex gap-3 group-data-[size=small]/move-flow:gap-2">
+    <span class="inline-flex h-5 w-5 shrink-0 items-center justify-center text-secondary group-data-[size=small]/move-flow:h-4 group-data-[size=small]/move-flow:w-4 group-data-[size=large]/move-flow:h-6 group-data-[size=large]/move-flow:w-6" aria-hidden="true">
+      <span class="text-sm group-data-[size=small]/move-flow:text-xs group-data-[size=large]/move-flow:text-base">
+        {{- partial "components/icon.html" (dict "type" "tip" "color" "secondary") -}}
+      </span>
+    </span>
+    <div class="min-w-0 text-sm leading-relaxed text-text group-data-[size=small]/move-flow:text-xs group-data-[size=large]/move-flow:text-lg [&_a]:text-secondary [&_a]:underline [&_a]:transition-colors [&_a]:duration-200 hover:[&_a]:text-primary [&_strong]:font-semibold [&_em]:italic">
+      {{- . | markdownify -}}
+    </div>
+  </div>
+</div>
+{{- end -}}

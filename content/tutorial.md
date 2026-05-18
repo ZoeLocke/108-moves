@@ -14,6 +14,8 @@ Welcome to 108 Moves. Here you can view the full list of moves as practised by t
 
 {{< icon type="unlearned" >}}: Move cards with this icon, also coloured red, are moves that have *not* yet been covered in class.
 
+{{< icon type="tip" >}}: When expanded, some cards may include tips with this icon. These are intended to help you remember things like which move follows another, which hand faces forwards, and so on.
+
 Use the **Size** button to change the size of the cards on this screen, so you can have more visible on the screen, or have all text be easier to read. The Size button is hidden from screen readers to improve the screen reader experience.
 
 ## Changelog
