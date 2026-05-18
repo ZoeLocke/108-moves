@@ -45,6 +45,26 @@
         if (!video || video.dataset.loaded === "true") return;
         if (!video.dataset.src) return;
 
+        const videoError = details.querySelector("[data-video-error]");
+        const showVideoError = () => {
+          if (videoError) {
+            videoError.classList.remove("hidden");
+          }
+          video.classList.add("hidden");
+        };
+
+        if (video.dataset.errorBound !== "true") {
+          video.addEventListener("error", showVideoError);
+          video.addEventListener("stalled", showVideoError);
+          video.addEventListener("loadeddata", () => {
+            if (videoError) {
+              videoError.classList.add("hidden");
+            }
+            video.classList.remove("hidden");
+          });
+          video.dataset.errorBound = "true";
+        }
+
         video.src = video.dataset.src;
         video.load();
         video.dataset.loaded = "true";

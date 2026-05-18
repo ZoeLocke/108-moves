@@ -33,8 +33,11 @@
       {{ with $videoResource }}
       <div class="mt-4 mx-auto w-full max-w-3xl group-data-[size=small]/move-flow:mt-3 group-data-[size=large]/move-flow:mt-5">
         <video class="aspect-video w-full rounded-2xl bg-primary/5" controls preload="none" playsinline data-lazy-video data-src="{{ .RelPermalink }}" aria-label="Video for {{ $move.Title }}">
-          Your browser does not support embedded video playback.You can watch the full video <a href="{{ $.Site.Params.full_video }}" class="text-primary underline">here</a>.
+          Your browser does not support embedded video playback.
         </video>
+        <p class="mt-3 hidden rounded-xl bg-not-learned px-3 py-2 text-sm leading-relaxed text-text/80 shadow-sm" data-video-error role="status">
+          This video could not be rendered in this browser. You can watch the full video <a href="{{ $move.Site.Params.full_video }}" class="text-primary underline">here</a>.
+        </p>
       </div>
       {{ end }}
     </div>
