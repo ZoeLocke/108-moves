@@ -1,6 +1,5 @@
 ---
 title: Fair Lady Works Shuttle (left)
-steps: []
 weight: 68
 direction: Back/Left
 learned: true
@@ -8,3 +7,5 @@ transition_note: Sweep around right on left foot to face **Front**, pull right f
 build:
     render: never
 ---
+
+

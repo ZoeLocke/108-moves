@@ -1,6 +1,5 @@
 ---
 title: Horizontal Single Whip
-steps: []
 weight: 57
 direction: Right
 learned: true
@@ -8,3 +7,5 @@ transition_note: Sweep around right to face **Right**, turn left toe to **Right*
 build:
     render: never
 ---
+
+
