@@ -30,7 +30,8 @@ title = '108 Moves'
   favicon = 'images/favicon.svg'
   recaptcha_site_key = '6LcIieYsAAAAADUZSbM4lC0nRp70GZ6B4kcwNg1G'
   recaptcha_verify_endpoint = 'https://my-netlify-functions.netlify.app/api/verify-recaptcha'
-  show_steps = false
+  show_steps = true
+  full_video = 'https://www.youtube.com/watch?v=0hFNZEm98fs'
 
 [taxonomies]
   category = 'categories'

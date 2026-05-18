@@ -39,6 +39,30 @@
       });
     }
 
+    if (flow) {
+      const loadVideoForDetails = (details) => {
+        const video = details.querySelector("video[data-lazy-video]");
+        if (!video || video.dataset.loaded === "true") return;
+        if (!video.dataset.src) return;
+
+        video.src = video.dataset.src;
+        video.load();
+        video.dataset.loaded = "true";
+      };
+
+      flow.querySelectorAll("details").forEach((details) => {
+        if (details.open) {
+          loadVideoForDetails(details);
+        }
+
+        details.addEventListener("toggle", () => {
+          if (details.open) {
+            loadVideoForDetails(details);
+          }
+        });
+      });
+    }
+
     const sizeMenuButton = document.getElementById("size-menu-button");
     const sizeMenu = document.getElementById("size-menu");
     const sizeCurrent = document.getElementById("size-current");
