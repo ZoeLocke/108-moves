@@ -46,6 +46,10 @@
         if (!video.dataset.src) return;
 
         const videoError = details.querySelector("[data-video-error]");
+        const webmUrl = video.dataset.srcWebm;
+        const mp4Url = video.dataset.srcMp4;
+        let currentSource = "webm";
+
         const showVideoError = () => {
           if (videoError) {
             videoError.classList.remove("hidden");
@@ -53,9 +57,19 @@
           video.classList.add("hidden");
         };
 
+        const tryNextFormat = () => {
+          if (currentSource === "webm" && mp4Url) {
+            currentSource = "mp4";
+            video.src = mp4Url;
+            video.load();
+          } else {
+            showVideoError();
+          }
+        };
+
         if (video.dataset.errorBound !== "true") {
-          video.addEventListener("error", showVideoError);
-          video.addEventListener("stalled", showVideoError);
+          video.addEventListener("error", tryNextFormat);
+          video.addEventListener("stalled", tryNextFormat);
           video.addEventListener("loadeddata", () => {
             if (videoError) {
               videoError.classList.add("hidden");
@@ -65,7 +79,7 @@
           video.dataset.errorBound = "true";
         }
 
-        video.src = video.dataset.src;
+        video.src = webmUrl || mp4Url;
         video.load();
         video.dataset.loaded = "true";
       };
