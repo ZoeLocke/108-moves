@@ -20,6 +20,7 @@ Use the **Size** button to change the size of the cards on this screen, so you c
 
 ## Changelog
 
+- **1.3.1** *2026/05/18* Added tips function to cards, will be adding tips over time.
 - **1.3.0** *2026/05/18* Moves are now cards that can be expanded to reveal videos of each move. MP4 fallbacks have been provided for if the default WebM format fails.
 - **1.2.0** *2026/05/17* Added site logo, navigation styling, and improved password reveal.
 - **1.1.2** *2026/05/17* Added privacy notice.
