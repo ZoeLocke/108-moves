@@ -15,7 +15,7 @@
     {{ partial "css.html" . }}
   {{ end }}
   <script>(function(){try{var mode=localStorage.getItem('siteThemeMode');if(mode==='light'||mode==='dark'){document.documentElement.setAttribute('data-theme',mode);}else{document.documentElement.removeAttribute('data-theme');}}catch(e){}})();</script>
-  {{ if and .Site.Params.recaptcha_site_key (not hugo.IsDevelopment) }}
+  {{ if .Site.Params.recaptcha_site_key }}
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   {{ end }}
 </head>
@@ -28,7 +28,7 @@
       <p class="text-sm text-text/70">Members only. Enter the group password to continue.</p>
     </div>
 
-    <form id="login-form" class="space-y-4" novalidate>
+    <form id="login-form" class="space-y-4" novalidate data-site-key="{{ .Site.Params.recaptcha_site_key | default "" }}" data-verify-endpoint="{{ .Site.Params.recaptcha_verify_endpoint | default "" }}">
       <div class="space-y-1">
         <label for="password" class="block text-sm font-medium">Password</label>
         <div class="relative">
@@ -70,7 +70,7 @@
         </style>
       </div>
 
-      {{ if and .Site.Params.recaptcha_site_key (not hugo.IsDevelopment) }}
+      {{ if .Site.Params.recaptcha_site_key }}
       <div class="flex w-full justify-center">
         <div class="g-recaptcha" data-sitekey="{{ .Site.Params.recaptcha_site_key }}"></div>
       </div>
@@ -101,10 +101,8 @@
       var passwordToggleText = document.getElementById('password-toggle-text');
       var passwordToggleIconShow = document.getElementById('password-toggle-icon-show');
       var passwordToggleIconHide = document.getElementById('password-toggle-icon-hide');
-      var isDevelopmentBuild = {{ hugo.IsDevelopment | jsonify }};
-      var siteKey = {{ .Site.Params.recaptcha_site_key | default "" | jsonify }};
-      var verifyEndpoint = {{ .Site.Params.recaptcha_verify_endpoint | default "" | jsonify }};
-      var disableRecaptcha = isDevelopmentBuild;
+      var siteKey = form ? (form.dataset.siteKey || '') : '';
+      var verifyEndpoint = form ? (form.dataset.verifyEndpoint || '') : '';
 
       function normalizeConfigString(value) {
         if (typeof value !== 'string') return '';
@@ -118,8 +116,8 @@
       siteKey = normalizeConfigString(siteKey);
       verifyEndpoint = normalizeConfigString(verifyEndpoint);
 
-      var recaptchaEnabled = !!siteKey && !disableRecaptcha;
-      var verificationEnabled = !!verifyEndpoint && !disableRecaptcha;
+      var recaptchaEnabled = !!siteKey;
+      var verificationEnabled = !!verifyEndpoint;
 
       function showError(msg) {
         errorEl.textContent = msg;
@@ -178,7 +176,7 @@
         var pw = passwordInput.value;
         var token = '';
 
-        if (!disableRecaptcha && (!recaptchaEnabled || !verificationEnabled)) {
+        if (!recaptchaEnabled || !verificationEnabled) {
           showError('Login is not fully configured.');
           return;
         }

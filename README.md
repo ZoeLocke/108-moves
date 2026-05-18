@@ -25,6 +25,8 @@ Built with Hugo and Tailwind CSS v4.
 npm install
 ```
 
+Local dev note: if you are testing locally without a live reCAPTCHA setup, comment out `recaptcha_site_key` in `config.toml`.
+
 3. Run local development server:
 
 ```bash
