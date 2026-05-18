@@ -104,8 +104,7 @@
       var isDevelopmentBuild = {{ hugo.IsDevelopment | jsonify }};
       var siteKey = {{ .Site.Params.recaptcha_site_key | default "" | jsonify }};
       var verifyEndpoint = {{ .Site.Params.recaptcha_verify_endpoint | default "" | jsonify }};
-      var isLocalHost = /^(localhost|127\.0\.0\.1)$/i.test(location.hostname);
-      var disableRecaptcha = isDevelopmentBuild || isLocalHost;
+      var disableRecaptcha = isDevelopmentBuild;
 
       function normalizeConfigString(value) {
         if (typeof value !== 'string') return '';
@@ -179,22 +178,22 @@
         var pw = passwordInput.value;
         var token = '';
 
+        if (!disableRecaptcha && (!recaptchaEnabled || !verificationEnabled)) {
+          showError('Login is not fully configured.');
+          return;
+        }
+
+        if (!pw.trim()) {
+          showError('Please enter the password.');
+          return;
+        }
+
         if (recaptchaEnabled) {
           token = (typeof grecaptcha !== 'undefined') ? grecaptcha.getResponse() : '';
           if (!token) {
             showError('Please complete the CAPTCHA.');
             return;
           }
-        }
-
-        if (!verificationEnabled && !pw.trim()) {
-          showError('Please enter the password.');
-          return;
-        }
-
-        if (!verifyEndpoint && !disableRecaptcha) {
-          showError('Login is not fully configured.');
-          return;
         }
 
         try {
