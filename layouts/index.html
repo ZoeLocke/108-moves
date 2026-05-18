@@ -6,7 +6,7 @@
 </div>
 
 <section class="mx-auto max-w-4xl space-y-7 font-primary text-text">
-  <div id="move-flow" class="group/move-flow pt-2" data-size="normal" data-advanced="false">
+  <div id="move-flow" class="group/move-flow pt-2" data-size="normal">
     {{- range $index, $move := $moves -}}
       {{- partial "components/move-card.html" (dict "move" $move) -}}
       {{- if lt (add $index 1) (len $moves) -}}
@@ -19,25 +19,6 @@
 <script>
   (() => {
     const flow = document.getElementById("move-flow");
-    const advancedButton = document.getElementById("advanced-button");
-    const advancedSrText = document.getElementById("advanced-sr-text");
-
-    if (advancedButton && flow) {
-      const advancedKey = "moveFlowAdvanced";
-      const setAdvanced = (on) => {
-        flow.dataset.advanced = on ? "true" : "false";
-        advancedButton.setAttribute("aria-pressed", on ? "true" : "false");
-        if (advancedSrText) {
-          advancedSrText.textContent = on ? "advanced mode on" : "advanced mode off";
-        }
-        localStorage.setItem(advancedKey, on ? "true" : "false");
-      };
-      const storedAdvanced = localStorage.getItem(advancedKey);
-      setAdvanced(storedAdvanced === "true");
-      advancedButton.addEventListener("click", () => {
-        setAdvanced(flow.dataset.advanced !== "true");
-      });
-    }
 
     if (flow) {
       const loadVideoForDetails = (details) => {
