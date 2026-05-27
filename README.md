@@ -49,6 +49,7 @@ Each move is a separate directory under `content/moves/` with an `index.md` file
 | `weight` | Yes | Sort order (ascending, 1–108) |
 | `learned` | Yes | Boolean indicating if the move is in active rotation |
 | `direction` | No | Direction of movement (e.g., "Left", "Front", "Right") |
+| `tip` | No | Handy tips to help you remember how to do the move |
 | `transition_note` | No | Short note shown in the connector to the next move |
 | Content body | No | Prose description of the move (supports Markdown) |
 
