@@ -1,5 +1,5 @@
 ---
-title: Brush Knee (left) and Twist Step
+title: Chop With Fist
 weight: 95
 direction: Left
 learned: true
