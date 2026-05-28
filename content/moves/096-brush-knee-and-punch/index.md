@@ -1,5 +1,5 @@
 ---
-title: Brush Knee and Punch
+title: Step up to Deflect, Parry, Punch
 weight: 96
 direction: Right
 learned: true
