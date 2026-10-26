@@ -10,16 +10,21 @@ Welcome to 108 Moves. Here you can view the full list of moves as practised by t
 
 {{< icon type="direction" >}}: Indicates which direction the move ends in; which way you will be facing once the move is complete. Directions include the walls **front** and **back**, the sides **left** and **right**, or combinations of wall and side, such as **front/right**.
 
-{{< icon type="learned" >}}: Move cards with this icon, also coloured green, are moves that have been covered in class (this will also apply to moves that are further in the set than we have reached, but are repeats of moves we already know).
+<!-- Learned/Unlearned mechanic removed, will fully delete it later -->
 
-{{< icon type="unlearned" >}}: Move cards with this icon, also coloured red, are moves that have *not* yet been covered in class.
+<!--{{< icon type="learned" >}}: Move cards with this icon, also coloured green, are moves that have been covered in class (this will also apply to moves that are further in the set than we have reached, but are repeats of moves we already know).-->
+
+<!--{{< icon type="unlearned" >}}: Move cards with this icon, also coloured red, are moves that have *not* yet been covered in class.-->
 
 {{< icon type="tip" >}}: When expanded, some cards may include tips with this icon. These are intended to help you remember things like which move follows another, which hand faces forwards, and so on.
+
+Use the {{< icon type="expand-all" >}} Expand All / {{< icon type="collapse-all" >}} Collapse All button to expand or collapse all cards. Note that videos are loaded when a card is first expanded, so there may be a short delay when first expanding all cards: **if you are using mobile data this will increase your data usage.**
 
 Use the **Size** button to change the size of the cards on this screen, so you can have more visible on the screen, or have all text be easier to read. The Size button is hidden from screen readers to improve the screen reader experience.
 
 ## Changelog
 
+- **1.4.0** *2026/10/26* Added the ability to expand and collapse all cards. Also removed the learned/not learned state of cards as we no longer need it.
 - **1.3.2** *2026/05/18* Resolved major bug where reCAPTCHA wasn't actually gating site!
 - **1.3.1** *2026/05/18* Added tips function to cards, will be adding tips over time.
 - **1.3.0** *2026/05/18* Moves are now cards that can be expanded to reveal videos of each move. MP4 fallbacks have been provided for if the default WebM format fails.
