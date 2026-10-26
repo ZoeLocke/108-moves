@@ -78,6 +78,26 @@
       });
     }
 
+    const cardsToggleButton = document.getElementById("cards-toggle-button");
+    const cardsToggleLabel = document.getElementById("cards-toggle-label");
+
+    if (flow && cardsToggleButton && cardsToggleLabel) {
+      // Cards start collapsed. Each click switches every card to the opposite of the last
+      // state set by this button; opening or closing a single card does not change it.
+      let allExpanded = false;
+
+      cardsToggleButton.addEventListener("click", () => {
+        allExpanded = !allExpanded;
+        flow.querySelectorAll("details").forEach((details) => {
+          details.open = allExpanded;
+        });
+        cardsToggleLabel.textContent = allExpanded ? "Collapse All" : "Expand All";
+        cardsToggleButton.querySelectorAll("[data-cards-icon]").forEach((iconWrapper) => {
+          iconWrapper.classList.toggle("hidden", (iconWrapper.dataset.cardsIcon === "collapse") !== allExpanded);
+        });
+      });
+    }
+
     const sizeMenuButton = document.getElementById("size-menu-button");
     const sizeMenu = document.getElementById("size-menu");
     const sizeCurrent = document.getElementById("size-current");

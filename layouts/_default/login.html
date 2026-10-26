@@ -15,7 +15,7 @@
     {{ partial "css.html" . }}
   {{ end }}
   <script>(function(){try{var mode=localStorage.getItem('siteThemeMode');if(mode==='light'||mode==='dark'){document.documentElement.setAttribute('data-theme',mode);}else{document.documentElement.removeAttribute('data-theme');}}catch(e){}})();</script>
-  {{ if .Site.Params.recaptcha_site_key }}
+  {{ if and .Site.Params.recaptcha_site_key (not hugo.IsServer) }}
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   {{ end }}
 </head>
@@ -28,7 +28,7 @@
       <p class="text-sm text-text/70">Members only. Enter the group password to continue.</p>
     </div>
 
-    <form id="login-form" class="space-y-4" novalidate data-site-key="{{ .Site.Params.recaptcha_site_key | default "" }}" data-verify-endpoint="{{ .Site.Params.recaptcha_verify_endpoint | default "" }}">
+    <form id="login-form" class="space-y-4" novalidate data-local-bypass="{{ hugo.IsServer }}" data-site-key="{{ .Site.Params.recaptcha_site_key | default "" }}" data-verify-endpoint="{{ .Site.Params.recaptcha_verify_endpoint | default "" }}">
       <div class="space-y-1">
         <label for="password" class="block text-sm font-medium">Password</label>
         <div class="relative">
@@ -70,7 +70,9 @@
         </style>
       </div>
 
-      {{ if .Site.Params.recaptcha_site_key }}
+      {{ if hugo.IsServer }}
+      <p class="text-center text-xs text-text/70">Local development server: CAPTCHA and password verification are skipped. Any password signs in.</p>
+      {{ else if .Site.Params.recaptcha_site_key }}
       <div class="flex w-full justify-center">
         <div class="g-recaptcha" data-sitekey="{{ .Site.Params.recaptcha_site_key }}"></div>
       </div>
@@ -103,6 +105,8 @@
       var passwordToggleIconHide = document.getElementById('password-toggle-icon-hide');
       var siteKey = form ? (form.dataset.siteKey || '') : '';
       var verifyEndpoint = form ? (form.dataset.verifyEndpoint || '') : '';
+      // Only true under `hugo server`; production builds always render "false".
+      var localBypass = form ? form.dataset.localBypass === 'true' : false;
 
       function normalizeConfigString(value) {
         if (typeof value !== 'string') return '';
@@ -175,6 +179,16 @@
 
         var pw = passwordInput.value;
         var token = '';
+
+        if (localBypass) {
+          if (!pw.trim()) {
+            showError('Please enter the password.');
+            return;
+          }
+          sessionStorage.setItem('tce_auth', '1');
+          location.replace('{{ "" | absLangURL }}');
+          return;
+        }
 
         if (!recaptchaEnabled || !verificationEnabled) {
           showError('Login is not fully configured.');

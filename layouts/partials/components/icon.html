@@ -51,6 +51,14 @@
 <span class="inline-flex shrink-0 items-center justify-center leading-none {{ $textClass }} {{ $hoverTextClass }}">
 	<i class="fa-solid fa-moon {{ $textClass }} {{ $hoverTextClass }} {{ $opacityClass }}" aria-hidden="true"></i>
 </span>
+{{- else if eq $type "expand-all" -}}
+<span class="inline-flex shrink-0 items-center justify-center leading-none {{ $textClass }} {{ $hoverTextClass }}">
+	<i class="fa-solid fa-up-right-and-down-left-from-center {{ $textClass }} {{ $hoverTextClass }} {{ $opacityClass }}" aria-hidden="true"></i>
+</span>
+{{- else if eq $type "collapse-all" -}}
+<span class="inline-flex shrink-0 items-center justify-center leading-none {{ $textClass }} {{ $hoverTextClass }}">
+	<i class="fa-solid fa-down-left-and-up-right-to-center {{ $textClass }} {{ $hoverTextClass }} {{ $opacityClass }}" aria-hidden="true"></i>
+</span>
 {{- else if eq $type "chevron-right" -}}
 <i class="fa-solid fa-chevron-right leading-none rotate-0 transition-transform duration-300 ease-out group-open:rotate-90 motion-reduce:transition-none {{ $textClass }} {{ $hoverTextClass }} {{ $opacityClass }}" aria-hidden="true"></i>
 {{- else if eq $type "file" -}}

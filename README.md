@@ -25,7 +25,7 @@ Built with Hugo and Tailwind CSS v4.
 npm install
 ```
 
-Local dev note: if you are testing locally without a live reCAPTCHA setup, comment out `recaptcha_site_key` in `config.toml`.
+Local dev note: when the site is run with `hugo server`, the login page skips reCAPTCHA and the verification endpoint, and any non-empty password signs in. Production builds (`hugo`) are not affected.
 
 3. Run local development server:
 
